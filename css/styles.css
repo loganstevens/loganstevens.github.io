@@ -17,6 +17,7 @@ body {
     background: linear-gradient(45deg, #ff7e5f, #feb47b, #ff6a00, #f36f6f, #f9a6a0); /* More vibrant gradient colors */
     background-size: 400% 400%; /* Ensure smooth animation */
     animation: gradientBackground 15s ease infinite; /* Faster animation */
+    scroll-behavior: smooth; /* Enable smooth scrolling for anchor links */
 }
 
 /* Gradient Animation */
