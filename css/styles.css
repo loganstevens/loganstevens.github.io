@@ -5,62 +5,33 @@
     box-sizing: border-box;
 }
 
-/* Body Styling - Beta */
-/*
+/* Body Styling */
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
     color: #333;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    min-height: 100vh; /* Ensure the body takes up at least the full height */
+    background: linear-gradient(45deg, #4e54c8, #8f94fb); /* Initial gradient */
+    background-size: 400% 400%; /* Ensure smooth animation */
+    animation: gradientBackground 15s ease infinite; /* Animate the gradient */
 }
-*/
 
-/* Body Styling - Delta */
-/*
-body {
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f5f7fa;
-    margin: 0;
-    background: linear-gradient(270deg, #003973, #aeae8a, #2C3E50, #aa4843, #316491, #482847);
-    background-size: 1200% 1200%;
-
-    -webkit-animation: GradientAnimation 90s ease infinite;
-    -moz-animation: GradientAnimation 90s ease infinite;
-    animation: GradientAnimation 90s ease infinite;
-}
-*/
-
-/* Body Styling */
-body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    
-    background: linear-gradient(270deg, #003973, #aeae8a, #2C3E50, #aa4843, #316491, #482847);
-    background-size: 1200% 1200%;
-
-    -webkit-animation: GradientAnimation 60s ease infinite;
-    -moz-animation: GradientAnimation 60s ease infinite;
-    animation: GradientAnimation 60s ease infinite;
+/* Gradient Animation */
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Header Styling */
 header {
-    background-color: #0056b3;
     color: #fff;
     text-align: center;
     padding: 50px 0;
+    z-index: 2; /* Ensure it sits above other content */
 }
 
 header h1 {
@@ -74,10 +45,12 @@ header p {
 
 /* Profile Image Styling */
 .profile-img {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    transition: 0.3s ease;
+    width: 200px; /* Set fixed width */
+    height: 200px; /* Set fixed height */
+    border-radius: 50%; /* Make the image circular */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    transition: 0.3s ease; /* Smooth transition when changing image */
+    z-index: 2; /* Ensure it sits above other content */
 }
 
 .profile-img:hover {
@@ -86,9 +59,10 @@ header p {
 
 /* Navigation Bar Styling */
 nav {
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent */
     padding: 10px 0;
     text-align: center;
+    z-index: 2; /* Ensure it sits above other content */
 }
 
 nav ul {
@@ -119,6 +93,7 @@ nav ul li a:hover {
 section {
     margin: 40px 0;
     padding: 20px;
+    z-index: 2; /* Ensure it sits above other content */
 }
 
 section h2 {
@@ -155,9 +130,10 @@ section ul li a:hover {
 footer {
     text-align: center;
     padding: 20px 0;
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent */
     color: #fff;
     margin-top: 40px;
+    z-index: 2; /* Ensure it sits above other content */
 }
 
 footer p {
