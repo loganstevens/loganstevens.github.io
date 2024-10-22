@@ -120,7 +120,7 @@ nav {
     position: absolute;
     right: 20px;
     top: 10px;
-    z-index: 2;
+    z-index: 3;
 }
 
 .hamburger-menu .bar {
