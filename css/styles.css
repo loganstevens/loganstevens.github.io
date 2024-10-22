@@ -55,11 +55,11 @@ header p {
     font-size: 20px;
 }
 
-/* Profile Image Styling */
+/* Profile Image Styling (Square with Rounded Corners) */
 .profile-img {
     width: 200px; /* Set fixed width */
     height: 200px; /* Set fixed height */
-    border-radius: 50%; /* Make the image circular */
+    border-radius: 15px; /* Make the image square with rounded corners */
     object-fit: cover; /* Ensure the image covers the area without distortion */
     transition: 0.3s ease; /* Smooth transition when changing image */
     z-index: 2; /* Ensure it sits above other content */
