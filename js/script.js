@@ -63,3 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // updateViewCounter();  // Update the view counter on page load
     updateLastUpdatedTime();  // Update the last updated time on page load
 });
+
+/* --------------------------------------------------------------------------- */
+
+// Get elements
+const hamburgerMenu = document.getElementById('hamburger-menu');
+const navLinks = document.getElementById('nav-links');
+
+// Toggle the navigation menu on click
+hamburgerMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active'); // Toggle the visibility of the nav links
+    hamburgerMenu.classList.toggle('active'); // Animate the hamburger icon
+});
