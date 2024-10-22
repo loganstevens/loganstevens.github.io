@@ -36,7 +36,7 @@ body {
 header {
     color: #fff;
     text-align: center;
-    padding: 50px 0;
+    padding: 20px 0;
     z-index: 2; /* Ensure it sits above other content */
     position: relative;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)); /* Dark transparent gradient */
