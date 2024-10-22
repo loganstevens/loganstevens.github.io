@@ -50,9 +50,9 @@ body {
     background: linear-gradient(270deg, #003973, #aeae8a, #2C3E50, #aa4843, #316491, #482847);
     background-size: 1200% 1200%;
 
-    -webkit-animation: GradientAnimation 90s ease infinite;
-    -moz-animation: GradientAnimation 90s ease infinite;
-    animation: GradientAnimation 90s ease infinite;
+    -webkit-animation: GradientAnimation 60s ease infinite;
+    -moz-animation: GradientAnimation 60s ease infinite;
+    animation: GradientAnimation 60s ease infinite;
 }
 
 /* Header Styling */
