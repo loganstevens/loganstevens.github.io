@@ -153,7 +153,8 @@ footer {
     color: #fff;
     margin-top: 40px;
     z-index: 2; /* Ensure it sits above other content */
-    border-radius: 25px; /* Add rounded corners to the nav bar */
+    border-top-left-radius: 25px; /* Add rounded corners to the nav bar */
+    border-top-right-radius: 25px; /* Add rounded corners to the nav bar */
     /* margin: 20px 0; */
     overflow: hidden; /* Prevent overflow if the border-radius is too large */
 }
