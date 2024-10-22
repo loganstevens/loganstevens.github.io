@@ -130,6 +130,7 @@ nav {
     background-color: #fff;
     margin: 6px 0;
     transition: 0.4s;
+    z-index: 3;
 }
 
 /* Mobile Navbar Styling */
@@ -144,15 +145,18 @@ nav {
         border-radius: 0 0 25px 25px;
         flex-direction: column;
         padding: 10px 0;
+        z-index: 3;
     }
 
     .nav-links.active {
         display: flex; /* Show the links when active */
+        z-index: 3;
     }
 
     /* Display the hamburger icon on mobile */
     .hamburger-menu {
         display: block;
+        z-index: 3;
     }
 }
 
