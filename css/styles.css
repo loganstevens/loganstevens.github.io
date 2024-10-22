@@ -18,10 +18,9 @@ body {
 }
 */
 
-/* Body Styling */
+/* Body Styling - Delta */
+/*
 body {
-    /* font-family: 'Arial', sans-serif; */
-    /* font-family: 'Roboto', sans-serif; */
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
@@ -32,9 +31,28 @@ body {
     background: linear-gradient(270deg, #003973, #aeae8a, #2C3E50, #aa4843, #316491, #482847);
     background-size: 1200% 1200%;
 
-    -webkit-animation: GradientAnimation 90s ease infinite; /* Increased duration */
+    -webkit-animation: GradientAnimation 90s ease infinite;
     -moz-animation: GradientAnimation 90s ease infinite;
-    animation: GradientAnimation 90s ease infinite; /* Increased duration */
+    animation: GradientAnimation 90s ease infinite;
+}
+*/
+
+/* Body Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    
+    background: linear-gradient(270deg, #003973, #aeae8a, #2C3E50, #aa4843, #316491, #482847);
+    background-size: 1200% 1200%;
+
+    -webkit-animation: GradientAnimation 90s ease infinite;
+    -moz-animation: GradientAnimation 90s ease infinite;
+    animation: GradientAnimation 90s ease infinite;
 }
 
 /* Header Styling */
