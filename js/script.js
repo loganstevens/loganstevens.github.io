@@ -6,7 +6,7 @@ const imageArray = [
 ];
 
 // Default image URL
-const defaultImage = "profile.png";
+const defaultImage = "assets/img/profile.png";
 
 // Function to get a random image
 function getRandomImage() {
