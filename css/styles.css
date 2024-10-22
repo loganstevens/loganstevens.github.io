@@ -35,7 +35,10 @@ header {
     padding: 50px 0;
     z-index: 2; /* Ensure it sits above other content */
     position: relative;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)); /* Dark transparent gradient */
+    border-radius: 25px; /* Rounded corners for the header background */
+    margin-bottom: 20px; /* Space between the header and content */
+    overflow: hidden; /* Prevent overflow beyond rounded edges */
 }
 
 /* Add padding to create some space between the header content and the top */
