@@ -41,7 +41,7 @@ header {
     z-index: 2; /* Ensure it sits above other content */
     position: relative;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)); /* Dark transparent gradient */
-    border-radius: 30px; /* Rounded corners for the header background */
+    border-radius: 25px; /* Rounded corners for the header background */
     margin-bottom: 20px; /* Space between the header and content */
     overflow: hidden; /* Prevent overflow beyond rounded edges */
 }
@@ -60,7 +60,7 @@ header p {
 .profile-img {
     width: 200px; /* Set fixed width */
     height: 200px; /* Set fixed height */
-    border-radius: 30px; /* Make the image square with rounded corners */
+    border-radius: 25px; /* Make the image square with rounded corners */
     object-fit: cover; /* Ensure the image covers the area without distortion */
     transition: 0.3s ease; /* Smooth transition when changing image */
     z-index: 2; /* Ensure it sits above other content */
