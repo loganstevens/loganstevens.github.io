@@ -54,7 +54,7 @@ function changeImage() {
 // Add event listeners to change the image on hover
 
 profileImage.addEventListener('mouseenter', () => {
-    profileImage.src = changeImage(); // Change to new image on hover
+    changeImage(); // Change to new image on hover
 });
 
 profileImage.addEventListener('mouseleave', () => {
