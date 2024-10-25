@@ -285,6 +285,10 @@ section ul li a:hover {
     position: relative; /* !! */
 }
 
+.left-button a {
+    color: #fff;
+}
+
 /* Footer Styling */
 footer {
     text-align: center;
