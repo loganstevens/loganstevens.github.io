@@ -1,0 +1,300 @@
+*, html {
+    scroll-behavior: smooth !important; /* Enforce smooth scrolling for anchor links */
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Arial', Arial, Helvetica, sans-serif;
+/*     font-family: 'Arial', sans-serif; */
+    /* Arial, Helvetica, sans-serif */
+    line-height: 1.6;
+/*     color: #333; */
+    color: #2d2d2d;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 100vh; /* Ensure the body takes up at least the full height */
+    /* background: linear-gradient(45deg, #ff7e5f, #feb47b, #ff6a00, #f36f6f, #f9a6a0); */
+    background: linear-gradient(45deg, #ff8cfb, #8fc1fb, #7bfeab, #ff7676, #b3a0f9); /* More dynamic gradient colors */
+    background-size: 400% 400%; /* Ensure smooth animation */
+    animation: gradientBackground 30s ease infinite; /* Faster animation */
+}
+
+a {
+    color: #2d2d2d;
+    text-decoration: underline;
+}
+
+/* Gradient Animation */
+@keyframes gradientBackground {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 50%; }
+    50% { background-position: 100% 0%; }
+    75% { background-position: 0% 0%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Header Styling */
+header {
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    z-index: 2; /* Ensure it sits above other content */
+    position: relative;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)); /* Dark transparent gradient */
+    border-radius: 25px; /* Rounded corners for the header background */
+    margin-bottom: 20px; /* Space between the header and content */
+    overflow: hidden; /* Prevent overflow beyond rounded edges */
+}
+
+/* Add padding to create some space between the header content and the top */
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 20px;
+}
+
+/* Profile Image Styling (Square with Rounded Corners) */
+.profile-img {
+    width: 200px; /* Set fixed width */
+    height: 200px; /* Set fixed height */
+    border-radius: 25px; /* Make the image square with rounded corners */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    transition: 0.3s ease; /* Smooth transition when changing image */
+    z-index: 2; /* Ensure it sits above other content */
+    
+    /* Add initial border styling */
+    border: 4px solid transparent; /* Initial transparent border */
+    padding: 5px; /* Create space between the image and the border */
+    transition: border-color 0.3s ease, transform 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Hover effect for profile image */
+.profile-img:hover {
+    cursor: pointer;
+    border-color: #8c8c8c00; /* Change border color on hover */
+    transform: scale(1.05); /* Slightly enlarge image on hover */
+}
+
+/* Navigation Bar Styling */
+nav {
+    background-color: rgba(0, 0, 0, 0.6); /* Darker background for readability */
+    padding: 10px 0;
+    text-align: center;
+    z-index: 2; /* Ensure it sits above other content */
+    border-radius: 25px; /* Add rounded corners to the nav bar */
+    margin: 20px 0; /* Add margin to separate the nav bar from other content */
+    overflow: hidden; /* Prevent overflow if the border-radius is too large */
+    position: relative; /* !! */
+}
+
+/* Navigation links styling */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    /* color: #00aaff; */
+    text-decoration: underline;
+}
+
+/* Hamburger Menu Styling */
+.hamburger-menu {
+    display: none; /* Hidden by default */
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark background for the hamburger menu */
+    border-radius: 5px; /* Rounded corners */
+    padding: 5px; /* Space around the icon */
+}
+
+.hamburger-menu .bar {
+    width: 30px;
+    height: 4px;
+    background-color: #fff;
+    margin: 6px 0;
+    transition: 0.4s;
+    z-index: 3;
+}
+
+/* Mobile Navbar Styling */
+@media screen and (max-width: 1536px) {
+    .nav-links {
+        display: none; /* Hide the links by default on mobile */
+        width: 100%;
+        text-align: left;
+        position: absolute;
+        top: 50px;
+        background-color: rgba(0, 0, 0, 0.9);
+        border-radius: 0 0 25px 25px;
+        flex-direction: column;
+        padding: 10px 0;
+        z-index: 3;
+    }
+
+    .nav-links.active {
+        display: flex; /* Show the links when active */
+        z-index: 3;
+    }
+
+    /* Display the hamburger icon on mobile */
+    .hamburger-menu {
+        display: block;
+        z-index: 3;
+    }
+}
+
+/* Animation for bars when hamburger is clicked */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Section Styling */
+section {
+/*     margin: 40px 0; */
+    padding: 20px;
+    z-index: 2; /* Ensure it sits above other content */
+}
+
+section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+section p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+section ul {
+    list-style: disc;
+    margin: 0;
+    padding: 0;
+}
+
+section ul li {
+/*     margin-bottom: 15px; */
+    font-size: 18px;
+}
+
+/*
+section ul li a {
+    color: #0056b3;
+    text-decoration: none;
+}
+*/
+
+section ul li a:hover {
+    text-decoration: underline;
+}
+
+/* News Section Styling */
+.news-content {
+    list-style-type: none;
+    padding: 0;
+    display: none; /* Hidden by default */
+    margin-top: 10px;
+}
+
+.news-content li {
+    margin: 5px 0;
+    color: #333;
+}
+
+/* Indicator Styling */
+.indicator {
+    font-size: 21px;
+/*     margin-left: 10px; */
+    transition: transform 0.3s; /* Smooth transition for rotation */
+}
+
+/* Change the indicator when the news section is expanded */
+.news-content.show {
+    display: block; /* Show the news content */
+}
+
+.news-content.show + .indicator {
+    transform: rotate(180deg); /* Rotate the indicator when expanded */
+}
+
+/* Collapsible Header */
+.collapsible {
+    cursor: pointer;
+/*     background-color: #444; */
+/*     color: #fff; */
+/*     padding: 10px; */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.collapsible:hover {
+    /* background-color: #555; */
+    border-color: #00aaff; /* Change border color on hover */
+    /* transform: scale(1.05); */
+}
+
+.left-button {
+    background-color: rgba(0, 0, 0, 0.6); /* Darker background for readability */
+    padding: 10px 0;
+    text-align: center;
+    z-index: 2; /* Ensure it sits above other content */
+    border-radius: 25px; /* Add rounded corners to the nav bar */
+    margin: 20px 0; /* Add margin to separate the nav bar from other content */
+    overflow: hidden; /* Prevent overflow if the border-radius is too large */
+    position: relative; /* !! */
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker background for readability */
+    color: #fff;
+    margin-top: 40px;
+    z-index: 2; /* Ensure it sits above other content */
+    border-top-left-radius: 25px; /* Add rounded corners to the nav bar */
+    border-top-right-radius: 25px; /* Add rounded corners to the nav bar */
+    /* margin: 20px 0; */
+    overflow: hidden; /* Prevent overflow if the border-radius is too large */
+}
+
+footer p {
+    font-size: 16px;
+}
