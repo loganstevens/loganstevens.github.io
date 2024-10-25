@@ -147,7 +147,7 @@ nav ul li a:hover {
 }
 
 /* Mobile Navbar Styling */
-@media screen and (max-width: 1536px) {
+@media screen and (max-width: 1020px) {
     .nav-links {
         display: none; /* Hide the links by default on mobile */
         width: 100%;
