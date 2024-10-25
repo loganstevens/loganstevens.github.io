@@ -95,7 +95,7 @@ function updateViewCounter() {
 // Display last updated time
 function updateLastUpdatedTime() {
     // You can manually set this date or fetch it dynamically from a backend
-    const lastUpdated = 'October 25, 2024, 01:09 AM | EST';  // Replace with your actual update time
+    const lastUpdated = 'October 25, 2024, 03:19 PM | EST';  // Replace with your actual update time
     lastUpdatedElement.textContent = `Last Updated: ${lastUpdated}`;  // Display the last updated time
 }
 
