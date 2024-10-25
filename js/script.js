@@ -46,9 +46,9 @@ let intervalId;
 // Function to change the image
 function changeImage() {
     // Set the new image source
-    profileImage.src = images[currentIndex];
+    profileImage.src = imageArray[currentIndex];
     // Update the index to the next image
-    currentIndex = (currentIndex + 1) % images.length; // Loop back to the first image
+    currentIndex = (currentIndex + 1) % imageArray.length; // Loop back to the first image
 }
 
 // Add event listeners to change the image on hover
