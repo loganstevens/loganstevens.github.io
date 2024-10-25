@@ -230,6 +230,11 @@ section ul li a:hover {
 }
 
 /* News Section Styling */
+
+#news {
+    border: rgba(0, 0, 0, 0.6);
+}
+
 .news-content {
     list-style-type: none;
     padding: 0;
