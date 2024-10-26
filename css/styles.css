@@ -71,10 +71,12 @@ header p {
     border-radius: 25px; /* Make the image square with rounded corners */
     object-fit: cover; /* Ensure the image covers the area without distortion */
     transition: 0.3s ease; /* Smooth transition when changing image */
+    transition: border 0.3s;
     z-index: 2; /* Ensure it sits above other content */
     
     /* Add initial border styling */
-    border: 4px solid transparent; /* Initial transparent border */
+/*     border: 4px solid transparent; */
+    border: 5px solid transparent;
     padding: 5px; /* Create space between the image and the border */
     transition: border-color 0.3s ease, transform 0.3s ease; /* Smooth transition on hover */
 }
@@ -84,6 +86,26 @@ header p {
     cursor: pointer;
 /*     border-color: #8c8c8c00; */
     transform: scale(1.05); /* Slightly enlarge image on hover */
+}
+
+/* Pulsating Border Animation */
+@keyframes pulse {
+    0% {
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        border-color: rgba(255, 255, 255, 1);
+        transform: scale(1.05);
+    }
+    100% {
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: scale(1);
+    }
+}
+
+.pulsate {
+    animation: pulse 1s infinite; /* Pulsate indefinitely */
 }
 
 /* Navigation Bar Styling */
