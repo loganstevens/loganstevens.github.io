@@ -254,7 +254,7 @@ section ul li a:hover {
     border: 5px solid rgba(0, 0, 0, 0.6); /* Border color and thickness */
     border-radius: 25px; /* Rounded corners */
     padding: 15px; /* Space inside the border */
-    margin-top: 20px; /* Space above the section */
+    /* margin-top: 20px; */
     /* background-color: rgba(0, 0, 0, 0.8); */
 }
 
