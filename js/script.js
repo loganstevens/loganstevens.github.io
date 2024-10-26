@@ -3,11 +3,17 @@ const imageArray = [
     "assets/img/profile1.png",
     "assets/img/profile2.png",
     "assets/img/profile3.png",
+    "assets/img/profile14.jpg"
     "assets/img/profile4.png",
+    "assets/img/profile10.jpg",
     "assets/img/profile5.png",
+    "assets/img/profile9.jpg",
+    "assets/img/profile8.png",
     "assets/img/profile6.png",
+    "assets/img/profile11.jpg",
     "assets/img/profile7.png",
-    "assets/img/profile8.png"
+    "assets/img/profile12.jpg",
+    "assets/img/profile13.jpg"
 ];
 
 // Default image URL
