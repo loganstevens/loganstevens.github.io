@@ -277,15 +277,14 @@ section ul li a:hover {
     /* color: #fff; */
     padding: 10px;
     border-radius: 5px;
+    margin-bottom: 0px; /* Override default h2 */
     transition: background-color 0.3s;
 }
-
+/*
 .collapsible:hover {
-    /* background-color: #555; */
-    border-color: #00aaff; /* Change border color on hover */
-    /* transform: scale(1.05); */
+    border-color: #00aaff;
 }
-
+*/
 /* Indicator Styling */
 .indicator {
     font-size: 21px;
