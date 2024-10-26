@@ -155,8 +155,8 @@ nav ul li a:hover {
     right: 20px;
     top: 10px;
     z-index: 3;
-    background-color: rgba(0, 0, 0, 0.8); /* Dark background for the hamburger menu */
-    border-radius: 5px; /* Rounded corners */
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background for the hamburger menu */
+    border-radius: 15px; /* Rounded corners */
     padding: 5px; /* Space around the icon */
 }
 
@@ -170,16 +170,16 @@ nav ul li a:hover {
 }
 
 /* Mobile Navbar Styling */
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1064px) {
     .nav-links {
         display: none; /* Hide the links by default on mobile */
-        width: 100%;
-        text-align: left;
+        width: 96%;
+        text-align: right;
         position: absolute;
-        top: 50px;
+        top: 60px;
         background-color: rgba(0, 0, 0, 0.9);
         border-radius: 25px;
-/*         border-radius: 0 0 25px 25px; */
+        /*         border-radius: 0 0 25px 25px; */
         flex-direction: column;
         padding: 10px 0;
         z-index: 3;
