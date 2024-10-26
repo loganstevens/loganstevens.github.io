@@ -24,6 +24,7 @@ function getRandomImage() {
 
 // Get the profile image element
 const profileImage = document.getElementById('profileImage');
+let hasHovered = false;
 
 // Add event listeners to change the image on hover
 
@@ -52,12 +53,19 @@ function changeImage() {
 }
 
 // Add event listeners to change the image on hover
+if (!hasHovered) {
+    profileImage.classList.add('pulsate'); // Start pulsating effect
+}
 
 profileImage.addEventListener('mouseenter', () => {
+    if (!hasHovered) {
+        hasHovered = true; // Mark that the user has hovered
+    }
     changeImage(); // Change to new image on hover
 });
 
 profileImage.addEventListener('mouseleave', () => {
+    profileImage.classList.remove('pulsate'); // Remove pulsating effect
     profileImage.src = defaultImage; // Reset to default image when the mouse leaves
 });
 
