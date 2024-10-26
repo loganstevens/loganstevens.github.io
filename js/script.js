@@ -60,6 +60,7 @@ if (!hasHovered) {
 profileImage.addEventListener('mouseenter', () => {
     if (!hasHovered) {
         hasHovered = true; // Mark that the user has hovered
+        profileImage.classList.remove('pulsate'); // Remove pulsating effect
     }
     changeImage(); // Change to new image on hover
 });
