@@ -105,7 +105,7 @@ header p {
 }
 
 .pulsate {
-    animation: pulse 1s infinite; /* Pulsate indefinitely */
+    animation: pulse 4s infinite; /* Pulsate indefinitely */
 }
 
 /* Navigation Bar Styling */
