@@ -255,7 +255,7 @@ section ul li a:hover {
     border-radius: 25px; /* Rounded corners */
     padding: 15px; /* Space inside the border */
     margin-top: 20px; /* Space above the section */
-    /* background-color: rgba(0, 0, 0, 0.8); /* !!! Optional: Background for contrast !!! .6 -> .8 */ */
+    /* background-color: rgba(0, 0, 0, 0.8); */
 }
 
 .news-content {
@@ -267,7 +267,7 @@ section ul li a:hover {
 
 .news-content li {
     margin: 5px 0;
-    /* color: #fff; /* !!! Text color for contrast !!! */ */
+    /* color: #fff; */
 }
 
 /* Collapsible Header */
