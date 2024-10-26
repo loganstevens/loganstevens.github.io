@@ -251,8 +251,13 @@ section ul li a:hover {
 
 /* News Section Styling */
 
+/* News Section Styling */
 #news {
-    border: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(0, 0, 0, 0.6); /* Border color and thickness */
+    border-radius: 25px; /* Rounded corners */
+    padding: 15px; /* Space inside the border */
+    margin-top: 20px; /* Space above the section */
+    background-color: rgba(0, 0, 0, 0.8); /* !!! Optional: Background for contrast !!! .6 -> .8 */
 }
 
 .news-content {
@@ -264,8 +269,23 @@ section ul li a:hover {
 
 .news-content li {
     margin: 5px 0;
-    color: #333;
+    color: #fff; /* !!! Text color for contrast !!! */
 }
+
+/* Collapsible Header */
+.collapsible {
+    cursor: pointer;
+    background-color: #444;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.collapsible:hover {
+    background-color: #555;
+}
+
 
 /* Indicator Styling */
 .indicator {
