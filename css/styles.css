@@ -95,7 +95,7 @@ header p {
         /* transform: scale(1); */
     }
     50% {
-        border-color: rgba(255, 255, 255, 0.5);
+        border-color: rgba(255, 255, 255, 0.6);
         /* transform: scale(1.05); */
     }
     100% {
