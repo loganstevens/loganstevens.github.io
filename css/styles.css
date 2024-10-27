@@ -348,6 +348,16 @@ tr {
 }
 */
 
+td {
+    vertical-align: top;
+}
+
+.paper-data {
+    padding: 10px;
+    border: 5px solid rgba(0, 0, 0, 0.6);
+    border-radius: 25px;
+}
+
 /* Footer Styling */
 footer {
     text-align: center;
