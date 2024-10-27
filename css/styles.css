@@ -319,7 +319,7 @@ section ul li a:hover {
     border-radius: 25px; /* Add rounded corners to the nav bar */
     margin: 20px 0; /* Add margin to separate the nav bar from other content */
     overflow: hidden; /* Prevent overflow if the border-radius is too large */
-    position: relative; /* !! */
+    position: absolute; /* !! */
 }
 
 .left-button a {
