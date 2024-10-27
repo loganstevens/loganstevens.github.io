@@ -314,6 +314,8 @@ section ul li a:hover {
 .left-button {
     background-color: rgba(0, 0, 0, 0.6); /* Darker background for readability */
     padding: 10px 0;
+    padding-left: 25px;
+    padding-right: 25px;
     text-align: center;
     z-index: 2; /* Ensure it sits above other content */
     border-radius: 25px; /* Add rounded corners to the nav bar */
