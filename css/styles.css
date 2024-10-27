@@ -89,7 +89,7 @@ header p {
 }
 
 .image {
-    width: 200px;
+    /* width: 200px; */
     height: 200px;
     border-radius: 25px; /* Make the image square with rounded corners */
     object-fit: cover; /* Ensure the image covers the area without distortion */
