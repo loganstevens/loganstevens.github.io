@@ -355,8 +355,11 @@ tr {
 }
 */
 
-td {
+image-td {
     width: 250px;
+}
+
+td {
     vertical-align: top;
 }
 
