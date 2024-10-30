@@ -334,11 +334,15 @@ section ul li a:hover {
     text-decoration: underline;
 }
 
-/*
+
 table {
-    display: inline;
+    /* display: inline; */
+    border: 0px;  /* Units of measurement may be different */
+    cellspacing: 15px; /* Units of measurement may be different */
+    cellpadding: 10px;  /* Units of measurement may be different */
+    width: 100%;
 }
-*/
+
 
 /*
 table {
@@ -352,6 +356,7 @@ tr {
 */
 
 td {
+    width: 250px;
     vertical-align: top;
 }
 
