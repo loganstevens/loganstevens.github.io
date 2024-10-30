@@ -334,6 +334,10 @@ section ul li a:hover {
     text-decoration: underline;
 }
 
+.tab-key {
+    display: inline-block;
+    margin-left: 40px;
+}
 
 table {
     /* display: inline; */
