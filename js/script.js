@@ -110,7 +110,7 @@ function updateViewCounter() {
 // Display last updated time
 function updateLastUpdatedTime() {
     // You can manually set this date or fetch it dynamically from a backend
-    const lastUpdated = 'November 2, 2024, 06:46 PM | EST';  // Replace with your actual update time
+    const lastUpdated = 'November 2, 2024, 07:49 PM | EST';  // Replace with your actual update time
     lastUpdatedElement.textContent = `Last Updated: ${lastUpdated}`;  // Display the last updated time
 }
 
@@ -132,12 +132,10 @@ hamburgerMenu.addEventListener('click', () => {
     hamburgerMenu.classList.toggle('active'); // Animate the hamburger icon
 });
 
-/* !! */
 navLinks.addEventListener('click', () => {
     navLinks.classList.toggle('active'); // Toggle the visibility of the nav links
     hamburgerMenu.classList.toggle('active'); // Animate the hamburger icon
 });
-/* !! */
 
 // Get elements for the news section
 const newsHeader = document.getElementById('news-header');
