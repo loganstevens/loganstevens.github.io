@@ -210,7 +210,7 @@ nav ul li a:hover {
 
 /* Animation for bars when hamburger is clicked */
 .hamburger-menu.active .bar:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
+    transform: rotate(-45deg) translate(-8px, 6px);
 }
 
 .hamburger-menu.active .bar:nth-child(2) {
@@ -218,7 +218,7 @@ nav ul li a:hover {
 }
 
 .hamburger-menu.active .bar:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+    transform: rotate(45deg) translate(-8px, -6px);
 }
 
 /* Section Styling */
