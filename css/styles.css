@@ -351,10 +351,6 @@ table {
 
 
 /*
-table {
-  border-collapse: collapse;
-}
-
 tr {
     border: 5px solid rgba(0, 0, 0, 0.6);
     border-radius: 25px;
@@ -384,6 +380,8 @@ td {
   image-td { /* img -> image-td */
     max-width: 100%; /* Make images responsive */
     height: auto;    /* Maintain aspect ratio */
+    display: block;  /* Ensures proper centering */
+    margin: 0 auto;  /* Centers the image */
   }
 }
 
