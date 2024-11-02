@@ -378,7 +378,7 @@ td {
     margin-bottom: 20px; /* Add space between rows */
   }
 
-  image-td { /* img -> image-td */
+  image { /* img -> image-td -> image */
     max-width: 100%; /* Make images responsive */
     height: auto;    /* Maintain aspect ratio */
     display: block;  /* Ensures proper centering */
