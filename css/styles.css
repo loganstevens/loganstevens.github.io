@@ -379,7 +379,8 @@ td {
   }
 
   .image { /* img -> image-td -> image */
-    max-width: 100%; /* Make images responsive */
+    /* max-width: 100%; */
+    width: auto;
     height: auto;    /* Maintain aspect ratio */
     display: block;  /* Ensures proper centering */
     margin: 0 auto;  /* Centers the image */
