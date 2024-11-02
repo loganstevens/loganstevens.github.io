@@ -132,6 +132,13 @@ hamburgerMenu.addEventListener('click', () => {
     hamburgerMenu.classList.toggle('active'); // Animate the hamburger icon
 });
 
+/* !! */
+navLinks.addEventListener('click', () => {
+    navLinks.classList.toggle('active'); // Toggle the visibility of the nav links
+    hamburgerMenu.classList.toggle('active'); // Animate the hamburger icon
+});
+/* !! */
+
 // Get elements for the news section
 const newsHeader = document.getElementById('news-header');
 const newsContent = document.getElementById('news-content');
