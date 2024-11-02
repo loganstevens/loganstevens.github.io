@@ -162,7 +162,7 @@ nav ul li a:hover {
 .hamburger-menu {
     display: none; /* Hidden by default */
     cursor: pointer;
-    position: absolute;
+    position: fixed; /* absolute -> fixed */
     right: 20px;
     top: 10px;
     z-index: 3;
@@ -186,7 +186,7 @@ nav ul li a:hover {
         display: none; /* Hide the links by default on mobile */
         width: 96%;
         text-align: right;
-        position: absolute;
+        position: fixed; /* absolute -> fixed */
         top: 60px;
         background-color: rgba(0, 0, 0, 0.9);
         border-radius: 25px;
