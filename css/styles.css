@@ -21,7 +21,8 @@ body {
     min-height: 100vh; /* Ensure the body takes up at least the full height */
     /* background: linear-gradient(45deg, #ff7e5f, #feb47b, #ff6a00, #f36f6f, #f9a6a0); */
     /* background: linear-gradient(45deg, #ff8cfb, #8fc1fb, #7bfeab, #ff7676, #b3a0f9); */
-    background: linear-gradient(45deg, #ffb1fc, #8fc1fb, #b5ead7, #ff9aa2, #c7ceea); /* More pastel gradient colors */
+    /* background: linear-gradient(45deg, #ffb1fc, #8fc1fb, #b5ead7, #ff9aa2, #c7ceea); */
+    background: linear-gradient(45deg, #ffb1fc, #99c9ff, #a3ffc5, #fff7ac, #b7a3ff); /* More pastel gradient colors II */
     background-size: 400% 400%; /* Ensure smooth animation */
     animation: gradientBackground 30s ease infinite; /* Faster animation */
 }
