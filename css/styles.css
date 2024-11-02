@@ -346,6 +346,7 @@ table {
     cellspacing: 15px; /* Units of measurement may be different */
     cellpadding: 10px;  /* Units of measurement may be different */
     width: 100%;
+    /* border-collapse: collapse; */
 }
 
 
@@ -366,6 +367,24 @@ image-td {
 
 td {
     vertical-align: top;
+    /* padding: 10px; */
+}
+
+/* Media query for narrow screens */
+@media (max-width: 1064px) { /* 600px -> 1064px */
+  table, tr, td {
+    display: block;
+    width: 100%;
+  }
+  
+  td {
+    margin-bottom: 20px; /* Add space between rows */
+  }
+
+  image-td { /* img -> image-td */
+    max-width: 100%; /* Make images responsive */
+    height: auto;    /* Maintain aspect ratio */
+  }
 }
 
 .paper-data {
