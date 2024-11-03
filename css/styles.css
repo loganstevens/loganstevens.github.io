@@ -344,8 +344,10 @@ section ul li a:hover {
 table {
     /* display: inline; */
     border: 0px;  /* Units of measurement may be different */
-    cellspacing: 15px; /* Units of measurement may be different */
-    cellpadding: 10px;  /* Units of measurement may be different */
+    /* cellspacing: 15px; */
+    /* cellpadding: 10px; */
+    border-spacing: 10px;
+    /* border-collapse: separate; */
     width: 100%;
     /* border-collapse: collapse; */
 }
