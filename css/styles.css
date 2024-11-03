@@ -85,7 +85,7 @@ header p {
 
 /* Hover effect for profile image */
 .profile-img:hover {
-    cursor: pointer;
+/*     cursor: pointer; */
 /*     border-color: #8c8c8c00; */
     transform: scale(1.05); /* Slightly enlarge image on hover */
 }
