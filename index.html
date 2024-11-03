@@ -235,6 +235,7 @@
 
     <!-- Projects Section -->
     <section id="projects">
+	<h2>Projects</h2>
 	    <table>
 		<!-- <tr>
 		<td width="250">
@@ -271,9 +272,7 @@
 			<!-- [<a href="XXX_VIDEO">Video</a>] -->
 			[<a href="https://github.com/loganstevens/racetrack">Code</a>]
 			<!-- [<a href="XXX_BIBTEX">Bibtex</a>] -->
-			</p>
-			
-			<br> <!-- !! -->
+			</p>			
 			<br>
 			In this paper, we present an interactive system that converts a
 			physical racetrack to a VR-simulated racing environment. The user
@@ -283,13 +282,14 @@
 			time with an overhead camera. The track pieces are segments of
 			straight or curved lines to model a straight part of a road or a turn,
 			and the user can incorporate additional functionalities upon some
-			of these pieces, triggering different functions in the corresponding
-			parts of the simulated environment (e.g. acceleration or deceleration
-			of the vehicle). Each of the pieces has an ArUco marker glued on
+			of these pieces. Each of the pieces has an ArUco marker glued on 
 			its center, which is detected from the captured video stream. By
-			extracting the coordinates and marker id of each of the markers
-			we compute their relative position and orientation and create an
-			occupancy grid representation of the physical map in a matrix form
+			extracting the coordinates and marker ID of each of the markers
+			we compute their relative position and orientation to create an
+			occupancy grid representation of the physical map in a matrix form 
+			which is saved to a shared file at every frame. The shared file is then
+			processed and decoded in a real-time Unity environment which
+			renders the virtual racetrack.
 			</td>
 			</tr>
 		</tbody>
