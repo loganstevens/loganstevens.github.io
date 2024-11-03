@@ -35,6 +35,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#news">News</a></li>
 	    <li><a href="#publications">Publications</a></li>
+	    <li><a href="#projects">Projects</a></li>
             <li><a href="#teaching">Teaching</a></li>
 	    <li><a href="#service">Service</a></li>
 	    <li><a href="#acting">Acting</a></li>
@@ -231,6 +232,69 @@
 			</tbody>
 		</table>
     </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+	    <table>
+		<!-- <tr>
+		<td width="250">
+		<a href="pdfs/publications/XXX_PAPER.pdf"><img class="image" src="img/teasers/XXX_TEASER.png" alt="XXX_ALT_TEXT" border=0 width="250"></a>
+		</td><td>
+		    <b>XXX_TITLE</b><br>
+		    XXX_AUTHORS<br>
+		<i>XXX_VENUE</i>, XXX_YEAR
+		<p class="links">
+		    [<a href="pdfs/publications/XXX_PAPER.pdf">Paper</a>]
+		    [<a href="XXX_ARXIV">arXiv</a>]
+		    [<a href="XXX_PROJECT_PAGE">Project Page</a>]
+		    [<a href="XXX_VIDEO">Video</a>]
+		    [<a href="XXX_CODE">Code</a>]
+		    [<a href="XXX_BIBTEX">Bibtex</a>]
+		</p>
+		<br>
+		XXX_SUMMARY
+		</td>
+		</tr> -->
+		<tbody>
+			<tr>
+			<td class="image-td">
+			<img class="image" src="assets/img/VR-RT-2-Figure-1.png" alt="VR-RT-2-Figure-1" border=0 width="250"></a>
+			</td><td class="paper-data">
+			<b>VR RT<sup>2</sup>: VR-Integrated Real-Time RaceTrack Simulator</b><br>
+			Angelos Mavrogiannis, Zining Zhang, <strong>Logan Stevens</strong>, Elliot Huang, Hyekang Kevin Joo<br>
+ 			<!-- <i>ACM Conference on Human Factors in Computing Systems (CHI)</i>, 2025 &nbsp; [Submitted] -->
+			
+			<p class="links">
+			[<a href="https://github.com/loganstevens/racetrack/blob/main/VR-RT-2(SMART_Lab).pdf">Paper</a>]
+ 			<!-- [<a href="XXX_ARXIV">arXiv</a>] -->
+ 			<!-- [<a href="https://github.com/loganstevens/racetrack">Project Page</a>] -->
+			<!-- [<a href="XXX_VIDEO">Video</a>] -->
+			[<a href="https://github.com/loganstevens/racetrack">Code</a>]
+			<!-- [<a href="XXX_BIBTEX">Bibtex</a>] -->
+			</p>
+			
+			<br> <!-- !! -->
+			<br>
+			In this paper, we present an interactive system that converts a
+			physical racetrack to a VR-simulated racing environment. The user
+			begins by constructing a physical racetrack using a set of 3D-printed
+			track pieces on a 3D-printed baseboard that resembles a chessboard.
+			A top-down view of the 2D design of the track is captured in real
+			time with an overhead camera. The track pieces are segments of
+			straight or curved lines to model a straight part of a road or a turn,
+			and the user can incorporate additional functionalities upon some
+			of these pieces, triggering different functions in the corresponding
+			parts of the simulated environment (e.g. acceleration or deceleration
+			of the vehicle). Each of the pieces has an ArUco marker glued on
+			its center, which is detected from the captured video stream. By
+			extracting the coordinates and marker id of each of the markers
+			we compute their relative position and orientation and create an
+			occupancy grid representation of the physical map in a matrix form
+			</td>
+			</tr>
+		</tbody>
+	</table>
+    </section>	
 
     <!-- Teaching Section -->
     <section id="teaching">
