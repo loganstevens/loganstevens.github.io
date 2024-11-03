@@ -148,3 +148,15 @@ newsHeader.addEventListener('click', () => {
     newsContent.style.display = isVisible ? 'none' : 'block';
     newsIndicator.textContent = isVisible ? '▼' : '▲'; // Change the indicator
 });
+
+/* --------------------------------------------------------------------------- */
+
+const romText = document.getElementById('rom-text');
+
+romText.addEventListener('mouseenter', () => {
+    element.textContent = "Elliot Huang 😘";
+});
+
+romText.addEventListener('mouseleave', () => {
+    element.textContent = "Elliot Huang";
+});
