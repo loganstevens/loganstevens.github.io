@@ -142,7 +142,7 @@ nav {
 }
 
 .nav-links li {
-    margin: 0 15px;
+    margin: 0 13px;
 }
 
 .nav-links li a {
@@ -181,7 +181,7 @@ nav ul li a:hover {
 }
 
 /* Mobile Navbar Styling */
-@media screen and (max-width: 1172px) { /* 1064px -> 1172px */
+@media screen and (max-width: 1142px) { /* 1064px -> 1172px -> 1142px */
     .nav-links {
         display: none; /* Hide the links by default on mobile */
         width: 96%;
@@ -370,7 +370,7 @@ td {
 }
 
 /* Media query for narrow screens */
-@media (max-width: 1172px) { /* 600px -> 1064px -> 1172px */
+@media (max-width: 1142px) { /* 600px -> 1064px -> 1172px -> 1142px */
   table, tr, td {
     display: block;
     width: 100%;
