@@ -395,7 +395,7 @@ td {
     border-radius: 25px;
 }
 
-.rom-text:hover {
+#rom-text:hover {
   text-decoration: underline;
   color: #ff00f7;
 }
