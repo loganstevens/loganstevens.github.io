@@ -153,10 +153,10 @@ newsHeader.addEventListener('click', () => {
 
 const romText = document.getElementById('rom-text');
 
-romText.addEventListener('mouseenter', () => {
-    element.textContent = "Elliot Huang 😘";
-});
+function changeText(element) {
+  element.textContent = "Elliot Huang 😘";
+}
 
-romText.addEventListener('mouseleave', () => {
-    element.textContent = "Elliot Huang";
-});
+function resetText(element) {
+  element.textContent = "Elliot Huang";
+}
