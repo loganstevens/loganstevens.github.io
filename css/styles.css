@@ -395,6 +395,11 @@ td {
     border-radius: 25px;
 }
 
+.rom-text:hover {
+  text-decoration: underline;
+  color: #ff00f7;
+}
+
 /* Footer Styling */
 footer {
     text-align: center;
