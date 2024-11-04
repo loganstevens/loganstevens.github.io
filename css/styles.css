@@ -329,13 +329,13 @@ section ul li a:hover {
     right: 25%;
 }
 
-.left-button a {
+a .left-button {
     color: #fff;
     font-weight: bold;
     text-decoration: none;
 }
 
-.left-button a:hover {
+a .left-button:hover {
     text-decoration: underline;
 }
 
