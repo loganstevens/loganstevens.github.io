@@ -316,14 +316,17 @@ section ul li a:hover {
 .left-button {
     background-color: rgba(0, 0, 0, 0.6); /* Darker background for readability */
     padding: 10px 0;
-    padding-left: 25px;
-    padding-right: 25px;
+    /* padding-left: 25px; */
+    /* padding-right: 25px; */
     text-align: center;
     z-index: 2; /* Ensure it sits above other content */
     border-radius: 25px; /* Add rounded corners to the nav bar */
     margin: 20px 0; /* Add margin to separate the nav bar from other content */
     overflow: hidden; /* Prevent overflow if the border-radius is too large */
     position: absolute; /* !! */
+    width: 50%;
+    left: 25%;
+    right: 25%;
 }
 
 .left-button a {
