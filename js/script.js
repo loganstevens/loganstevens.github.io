@@ -63,6 +63,10 @@ if (!hasHovered) {
     profileImage.classList.add('pulsate'); // Start pulsating effect
 }
 
+function isMobile() {
+    return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent); // Check if mobile device
+}
+
 profileImage.addEventListener('mouseenter', () => {
     if (!hasHovered) {
         hasHovered = true; // Mark that the user has hovered
