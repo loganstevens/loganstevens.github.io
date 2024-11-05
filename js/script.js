@@ -1,3 +1,9 @@
+function isMobile() {
+    return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent); // Check if mobile device
+}
+
+const mobile = isMobile();
+
 // Array of random image URLs | script.js
 const imageArray = [
     "assets/img/profile1.png",
@@ -63,22 +69,38 @@ if (!hasHovered) {
     profileImage.classList.add('pulsate'); // Start pulsating effect
 }
 
-function isMobile() {
-    return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent); // Check if mobile device
+
+if (!mobile) {
+    profileImage.addEventListener('mouseenter', () => {
+        if (!hasHovered) {
+            hasHovered = true; // Mark that the user has hovered
+            profileImage.classList.remove('pulsate'); // Remove pulsating effect
+        }
+        changeImage(); // Change to new image on hover
+    });
+    
+    profileImage.addEventListener('mouseleave', () => {
+        profileImage.classList.remove('pulsate'); // Remove pulsating effect
+        profileImage.src = defaultImage; // Reset to default image when the mouse leaves
+    });
 }
 
-profileImage.addEventListener('mouseenter', () => {
-    if (!hasHovered) {
-        hasHovered = true; // Mark that the user has hovered
-        profileImage.classList.remove('pulsate'); // Remove pulsating effect
-    }
-    changeImage(); // Change to new image on hover
-});
-
-profileImage.addEventListener('mouseleave', () => {
-    profileImage.classList.remove('pulsate'); // Remove pulsating effect
-    profileImage.src = defaultImage; // Reset to default image when the mouse leaves
-});
+else {
+    profileImage.addEventListener('click', () => {
+        if (!hasHovered) {
+            hasHovered = true; // Mark that the user has hovered
+            profileImage.classList.remove('pulsate'); // Remove pulsating effect
+        }
+        changeImage(); // Change to new image on hover
+    });
+    
+    document.addEventListener('click', (event) => {
+        if (!profileImage.contains(event.target)) {
+            profileImage.classList.remove('pulsate'); // Remove pulsating effect
+            profileImage.src = defaultImage; // Reset to default image when the mouse leaves
+        }
+    });
+}
 
 // Event listeners for mouse over and out
 // profileImage.addEventListener('mouseenter', () => {
@@ -164,4 +186,3 @@ romText.addEventListener('mouseover', function() {
 romText.addEventListener('mouseout', function() {
     this.textContent = "Elliot Huang";
 });
-
