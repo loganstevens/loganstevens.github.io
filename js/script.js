@@ -70,7 +70,7 @@ if (!hasHovered) {
 }
 
 
-if (!mobile) {
+if (!mobile) { // Not on Mobile (Desktop/Laptop)
     profileImage.addEventListener('mouseenter', () => {
         if (!hasHovered) {
             hasHovered = true; // Mark that the user has hovered
@@ -85,11 +85,11 @@ if (!mobile) {
     });
 }
 
-else {
+else { // On Mobile
     profileImage.addEventListener('click', () => {
         if (!hasHovered) {
             hasHovered = true; // Mark that the user has hovered
-            profileImage.classList.remove('pulsate'); // Remove pulsating effect
+            // profileImage.classList.remove('pulsate');
         }
         changeImage(); // Change to new image on hover
     });
@@ -136,7 +136,7 @@ function updateViewCounter() {
 // Display last updated time
 function updateLastUpdatedTime() {
     // You can manually set this date or fetch it dynamically from a backend
-    const lastUpdated = 'November 5, 2024, 12:16 AM | EST';  // Replace with your actual update time
+    const lastUpdated = 'November 5, 2024, 12:22 AM | EST';  // Replace with your actual update time
     lastUpdatedElement.textContent = `Last Updated: ${lastUpdated}`;  // Display the last updated time
 }
 
