@@ -388,6 +388,7 @@ tr {
 #teaching-td-p {
     font-style: italic;
     color: rgba(0, 0, 0, 0.6);
+    text-align: center;
 }
 
 td {
