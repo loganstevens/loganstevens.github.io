@@ -370,6 +370,19 @@ tr {
     width: 250px;
 }
 
+.image-td-teaching {
+    width: 250px;
+}
+
+.image-teaching {
+    /* width: 200px; */
+    height: 200px;
+    border-radius: 25px; /* Make the image square with rounded corners */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    z-index: 2; /* Ensure it sits above other content */
+/*     padding: 5px; */
+}
+
 td {
     vertical-align: top;
     /* padding: 10px; */
