@@ -414,6 +414,27 @@ td {
     display: block;  /* Ensures proper centering */
     margin: 0 auto;  /* Centers the image */
   }
+
+  .image-td {
+    width: 250px;
+  }
+
+  .image-td-teaching {
+    width: 250px;
+    padding: 5px;
+    border: 5px solid rgba(0, 0, 0, 0.6);
+    border-radius: 32px;
+    margin-bottom: 20px; /* Add space between rows */
+  }
+    
+  .image-teaching {
+    max-width: 100%;
+    width: auto;
+    height: 350px;
+    border-radius: 25px; /* Make the image square with rounded corners */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    z-index: 2; /* Ensure it sits above other content */
+  }
 }
 
 .paper-data {
