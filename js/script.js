@@ -136,7 +136,7 @@ function updateViewCounter() {
 // Display last updated time
 function updateLastUpdatedTime() {
     // You can manually set this date or fetch it dynamically from a backend
-    const lastUpdated = 'November 19, 2024, 4:15 PM | EST';  // Replace with your actual update time
+    const lastUpdated = 'November 19, 2024, 8:43 PM | EST';  // Replace with your actual update time
     lastUpdatedElement.textContent = `Last Updated: ${lastUpdated}`;  // Display the last updated time
 }
 
@@ -162,6 +162,56 @@ navLinks.addEventListener('click', () => {
     navLinks.classList.toggle('active'); // Toggle the visibility of the nav links
     hamburgerMenu.classList.toggle('active'); // Animate the hamburger icon
 });
+
+/* --------------------------------------------------------------------------- */
+
+// Define the list of colors in HEX format
+const colors = [
+    "#ffb1fc", // pink
+    "#99c9ff", // light blue
+    "#a3ffc5", // mint green
+    "#fff7ac", // light yellow
+    "#b7a3ff"  // lavender
+];
+
+// Function to convert hex to RGB
+function hexToRgb(hex) {
+    var r = parseInt(hex.slice(1, 3), 16);
+    var g = parseInt(hex.slice(3, 5), 16);
+    var b = parseInt(hex.slice(5, 7), 16);
+    return { r, g, b };
+}
+
+// Function to interpolate between two RGB colors
+function interpolateColor(color1, color2, factor) {
+    var r = Math.round(color1.r + (color2.r - color1.r) * factor);
+    var g = Math.round(color1.g + (color2.g - color1.g) * factor);
+    var b = Math.round(color1.b + (color2.b - color1.b) * factor);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
+window.addEventListener('scroll', function () {
+    var scrollPosition = window.scrollY;
+    var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    var scrollPercentage = scrollPosition / maxScroll;
+
+    // Calculate which two colors to interpolate between
+    var colorIndex = Math.floor(scrollPercentage * (colors.length - 1));
+    var nextColorIndex = Math.min(colorIndex + 1, colors.length - 1); // Prevent going out of bounds
+
+    // Get the RGB values for the current and next colors
+    var color1 = hexToRgb(colors[colorIndex]);
+    var color2 = hexToRgb(colors[nextColorIndex]);
+
+    // Calculate the interpolation factor
+    var factor = (scrollPercentage * (colors.length - 1)) - colorIndex;
+
+    // Get the interpolated color and apply it to the background
+    var interpolatedColor = interpolateColor(color1, color2, factor);
+    document.body.style.backgroundColor = interpolatedColor;
+});
+
+/* --------------------------------------------------------------------------- */
 
 // Get elements for the news section
 const newsHeader = document.getElementById('news-header');
