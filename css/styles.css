@@ -323,12 +323,13 @@ section ul li a:hover {
     text-align: center;
     z-index: 2; /* Ensure it sits above other content */
     border-radius: 25px; /* Add rounded corners to the nav bar */
-    margin: 20px 0; /* Add margin to separate the nav bar from other content */
+    margin: 20px auto; /* Add margin to separate the nav bar from other content. 0 -> auto*/
     overflow: hidden; /* Prevent overflow if the border-radius is too large */
     position: absolute; /* !! */
     width: 50%;
     left: 25%;
     right: 25%;
+    max-width: 1160px;
 }
 
 a .left-button {
