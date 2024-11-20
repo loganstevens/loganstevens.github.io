@@ -20,7 +20,7 @@ const imageArray = [
     "assets/img/profile7.png",
     "assets/img/profile12.jpg",
     "assets/img/profile13.jpg",
-    "assets/img/profile15.jpg"
+    "assets/img/profile15.png"
 ];
 
 // Default image URL
@@ -137,7 +137,7 @@ function updateViewCounter() {
 // Display last updated time
 function updateLastUpdatedTime() {
     // You can manually set this date or fetch it dynamically from a backend
-    const lastUpdated = 'November 20, 2024, 6:40 AM | EST';  // Replace with your actual update time
+    const lastUpdated = 'November 20, 2024, 6:54 AM | EST';  // Replace with your actual update time
     lastUpdatedElement.textContent = `Last Updated: ${lastUpdated}`;  // Display the last updated time
 }
 
