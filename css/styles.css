@@ -397,7 +397,7 @@ td {
 }
 
 /* Media query for narrow screens */
-@media (max-width: 1142px) { /* 600px -> 1064px -> 1172px -> 1142px */
+@media (max-width: 1016px) { /* 600px -> 1064px -> 1172px -> 1142px -> 1016px */
   table, tr, td {
     display: block;
     width: 100%;
