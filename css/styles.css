@@ -432,7 +432,7 @@ td {
   .image-teaching {
     max-width: 100%;
     width: auto;
-    height: 350px;
+    height: 300px;
     border-radius: 25px; /* Make the image square with rounded corners */
     object-fit: cover; /* Ensure the image covers the area without distortion */
     z-index: 2; /* Ensure it sits above other content */
