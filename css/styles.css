@@ -414,7 +414,8 @@ td {
     width: auto;
     height: 200px;    /* Maintain aspect ratio */
     display: block;  /* Ensures proper centering */
-    margin: 0 auto;  /* Centers the image */
+    /* margin: 0 auto; */
+    /* Centers the image */
   }
 
   .image-td {
