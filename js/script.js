@@ -74,11 +74,9 @@ function changeImage() {
 }
 */
 
-function changeImage(image, array, index = 0) {
+function changeImage(image, array, index) {
     // Set the new image source
     image.src = array[index];
-    // Update the index to the next image
-    index = (index + 1) % array.length; // Loop back to the first image
 }
 
 // Add event listeners to change the image on hover
@@ -94,6 +92,8 @@ if (!mobile) { // Not on Mobile (Desktop/Laptop)
             profileImage.classList.remove('pulsate'); // Remove pulsating effect
         }
         changeImage(profileImage, profileImageArray, currentProfileImageIndex); // Change to new profile image on hover
+        // Update the profile image index to the next image
+        currentProfileImageIndex = (currentProfileImageIndex + 1) % profileImageArray.length; // Loop back to the first image
     });
     
     profileImage.addEventListener('mouseleave', () => {
@@ -109,6 +109,8 @@ else { // On Mobile
             // profileImage.classList.remove('pulsate');
         }
         changeImage(profileImage, profileImageArray, currentProfileImageIndex); // Change to new profile image on hover
+        // Update the profile image index to the next image
+        currentProfileImageIndex = (currentProfileImageIndex + 1) % profileImageArray.length; // Loop back to the first image
     });
     
     document.addEventListener('click', (event) => {
@@ -176,7 +178,7 @@ function updateViewCounter() {
 // Display last updated time
 function updateLastUpdatedTime() {
     // You can manually set this date or fetch it dynamically from a backend
-    const lastUpdated = 'March 30, 2025, 12:09 AM | EST';  // Replace with your actual update time
+    const lastUpdated = 'March 30, 2025, 12:23 AM | EST';  // Replace with your actual update time
     lastUpdatedElement.textContent = `Last Updated: ${lastUpdated}`;  // Display the last updated time
 }
 
