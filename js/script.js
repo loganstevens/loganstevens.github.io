@@ -125,7 +125,7 @@ if (!mobile) { // Not on Mobile (Desktop/Laptop)
         changeImage(vr2025Image, vr2025ImageArray); // Change to new VR image on hover
     });
     
-    profileImage.addEventListener('mouseleave', () => {
+    vr2025Image.addEventListener('mouseleave', () => {
         vr2025Image.src = defaultVr2025Image; // Reset to default VR image when the mouse leaves
     });
 }
@@ -176,7 +176,7 @@ function updateViewCounter() {
 // Display last updated time
 function updateLastUpdatedTime() {
     // You can manually set this date or fetch it dynamically from a backend
-    const lastUpdated = 'March 30, 2025, 12:08 AM | EST';  // Replace with your actual update time
+    const lastUpdated = 'March 30, 2025, 12:09 AM | EST';  // Replace with your actual update time
     lastUpdatedElement.textContent = `Last Updated: ${lastUpdated}`;  // Display the last updated time
 }
 
