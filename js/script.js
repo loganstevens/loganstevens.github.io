@@ -4,8 +4,8 @@ function isMobile() {
 
 const mobile = isMobile();
 
-// Array of random image URLs | script.js
-const imageArray = [
+// Array of profile image URLs | script.js
+const profileprofileImageArray = [
     "assets/img/profile1.png",
     "assets/img/profile2.png",
     "assets/img/profile3.png",
@@ -23,20 +23,27 @@ const imageArray = [
     "assets/img/profile15.png"
 ];
 
+// Array of VR2025 image URLs | script.js
+const vr2025ImageArray = [
+    "assets/img/vr2025-pose-1.JPG"
+];
+
 // Default image URL
-const defaultImage = "assets/img/profile.png";
+const defaultProfileImage = "assets/img/profile.png";
+const defaultVr2025Image = "assets/img/RDW-1.png";
 
 /* --------------------------------------------------------------------------- */
 
 // Function to get a random image
 
 function getRandomImage() {
-    const randomIndex = Math.floor(Math.random() * imageArray.length);
-    return imageArray[randomIndex];
+    const randomIndex = Math.floor(Math.random() * profileprofileImageArray.length);
+    return profileprofileImageArray[randomIndex];
 }
 
-// Get the profile image element
+// Get the image element
 const profileImage = document.getElementById('profileImage');
+const vr2025Image = document.getElementById('vr2025Image');
 let hasHovered = false;
 
 // Add event listeners to change the image on hover
@@ -46,7 +53,7 @@ let hasHovered = false;
 // });
 
 // profileImage.addEventListener('mouseleave', () => {
-//     profileImage.src = defaultImage; // Reset to default image when the mouse leaves
+//     profileImage.src = defaultProfileImage; // Reset to default image when the mouse leaves
 // });
 
 
@@ -54,15 +61,24 @@ let hasHovered = false;
 
 // Get the profile image element
 // const profileImage = document.getElementById('profileImage'); /* name !! */
-let currentIndex = 0;
+let currentProfileImageIndex = 0;
 let intervalId;
 
 // Function to change the image
+/*
 function changeImage() {
     // Set the new image source
-    profileImage.src = imageArray[currentIndex];
+    profileImage.src = profileprofileImageArray[currentProfileImageIndex];
     // Update the index to the next image
-    currentIndex = (currentIndex + 1) % imageArray.length; // Loop back to the first image
+    currentProfileImageIndex = (currentProfileImageIndex + 1) % profileImageArray.length; // Loop back to the first image
+}
+*/
+
+function changeImage(image, array, index = 0) {
+    // Set the new image source
+    image.src = array[index];
+    // Update the index to the next image
+    index = (index + 1) % array.length; // Loop back to the first image
 }
 
 // Add event listeners to change the image on hover
@@ -70,19 +86,19 @@ if (!hasHovered) {
     profileImage.classList.add('pulsate'); // Start pulsating effect
 }
 
-
+// Profile Image
 if (!mobile) { // Not on Mobile (Desktop/Laptop)
     profileImage.addEventListener('mouseenter', () => {
         if (!hasHovered) {
             hasHovered = true; // Mark that the user has hovered
             profileImage.classList.remove('pulsate'); // Remove pulsating effect
         }
-        changeImage(); // Change to new image on hover
+        changeImage(profileImage, profileImageArray, currentProfileImageIndex); // Change to new profile image on hover
     });
     
     profileImage.addEventListener('mouseleave', () => {
         profileImage.classList.remove('pulsate'); // Remove pulsating effect
-        profileImage.src = defaultImage; // Reset to default image when the mouse leaves
+        profileImage.src = defaultProfileImage; // Reset to default image when the mouse leaves
     });
 }
 
@@ -92,13 +108,36 @@ else { // On Mobile
             hasHovered = true; // Mark that the user has hovered
             // profileImage.classList.remove('pulsate');
         }
-        changeImage(); // Change to new image on hover
+        changeImage(profileImage, profileImageArray, currentProfileImageIndex); // Change to new profile image on hover
     });
     
     document.addEventListener('click', (event) => {
         if (!profileImage.contains(event.target)) {
             profileImage.classList.remove('pulsate'); // Remove pulsating effect
-            profileImage.src = defaultImage; // Reset to default image when the mouse leaves
+            profileImage.src = defaultProfileImage; // Reset to default image when the mouse leaves
+        }
+    });
+}
+
+// VR2025 Image
+if (!mobile) { // Not on Mobile (Desktop/Laptop)
+    vr2025Image.addEventListener('mouseenter', () => {
+        changeImage(vr2025Image, vr2025ImageArray); // Change to new VR image on hover
+    });
+    
+    profileImage.addEventListener('mouseleave', () => {
+        vr2025Image.src = defaultVr2025Image; // Reset to default VR image when the mouse leaves
+    });
+}
+
+else { // On Mobile
+    vr2025Image.addEventListener('click', () => {
+        changeImage(vr2025Image, vr2025ImageArray); // Change to new VR image on hover
+    });
+    
+    document.addEventListener('click', (event) => {
+        if (!profileImage.contains(event.target)) {
+            vr2025Image.src = defaultVr2025Image; // Reset to default image when the mouse leaves
         }
     });
 }
@@ -111,7 +150,7 @@ else { // On Mobile
 
 // profileImage.addEventListener('mouseleave', () => {
 //     clearInterval(intervalId); // Stop changing images
-//     profileImage.src = defaultImage; // Reset to default image
+//     profileImage.src = defaultProfileImage; // Reset to default image
 // });
 
 /* --------------------------------------------------------------------------- */
