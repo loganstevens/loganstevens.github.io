@@ -68,6 +68,10 @@ header p {
     padding-right: 10px;
 }
 
+ol > li {
+    margin-left: 18px;
+}
+
 /* Profile Image Styling (Square with Rounded Corners) */
 .profile-img {
     width: 200px; /* Set fixed width */
