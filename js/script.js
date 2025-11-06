@@ -178,7 +178,7 @@ function updateViewCounter() {
 // Display last updated time
 function updateLastUpdatedTime() {
     // You can manually set this date or fetch it dynamically from a backend
-    const lastUpdated = 'August 10, 2025, 10:25 PM | EST';  // Replace with your actual update time
+    const lastUpdated = 'November 06, 2025, 12:30 PM | EST';  // Replace with your actual update time
     lastUpdatedElement.textContent = `Last Updated: ${lastUpdated}`;  // Display the last updated time
 }
 
@@ -278,4 +278,5 @@ romText.addEventListener('mouseover', function() {
 romText.addEventListener('mouseout', function() {
     this.textContent = "Elliot Huang";
 });
+
 
