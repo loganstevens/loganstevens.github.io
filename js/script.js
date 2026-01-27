@@ -8,7 +8,8 @@ const mobile = isMobile();
 const profileImageArray = [
     "assets/img/profile1.png",
     "assets/img/profile2.png",
-    "assets/img/profile3.png",
+    // "assets/img/profile3.png",
+    "assets/img/profile.png",
     "assets/img/profile14.jpg",
     "assets/img/profile4.png",
     "assets/img/profile10.jpg",
@@ -29,7 +30,8 @@ const vr2025ImageArray = [
 ];
 
 // Default image URL
-const defaultProfileImage = "assets/img/profile.png";
+// const defaultProfileImage = "assets/img/profile.png";
+const defaultProfileImage = "assets/img/profile3.png";
 const defaultVr2025Image = "assets/img/RDW-1.png";
 
 /* --------------------------------------------------------------------------- */
@@ -278,6 +280,7 @@ romText.addEventListener('mouseover', function() {
 romText.addEventListener('mouseout', function() {
     this.textContent = "Elliot Huang";
 });
+
 
 
 
