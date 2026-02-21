@@ -10,7 +10,7 @@ const profileImageArray = [
     "assets/img/profile2.png",
     // "assets/img/profile3.png",
     "assets/img/profile.png",
-    "assets/img/profile16.jpg",
+    // "assets/img/profile16.jpg",
     "assets/img/profile14.jpg",
     "assets/img/profile4.png",
     "assets/img/profile10.jpg",
@@ -281,6 +281,7 @@ romText.addEventListener('mouseover', function() {
 romText.addEventListener('mouseout', function() {
     this.textContent = "Elliot Huang";
 });
+
 
 
 
