@@ -30,10 +30,15 @@ const vr2025ImageArray = [
     "assets/img/vr2025-pose-1.JPG"
 ];
 
+const brown2022ImageArray = [
+    "assets/img/VR-Team.jpg"
+];
+
 // Default image URL
 // const defaultProfileImage = "assets/img/profile.png";
 const defaultProfileImage = "assets/img/profile3.png";
 const defaultVr2025Image = "assets/img/RDW-1.png";
+const defaultBrown2022Image = "assets/img/Brown.png";
 
 /* --------------------------------------------------------------------------- */
 
@@ -143,6 +148,30 @@ else { // On Mobile
     document.addEventListener('click', (event) => {
         if (!profileImage.contains(event.target)) {
             vr2025Image.src = defaultVr2025Image; // Reset to default image when the mouse leaves
+        }
+    });
+}
+
+
+// brown2022Image
+if (!mobile) { // Not on Mobile (Desktop/Laptop)
+    brown2022Image.addEventListener('mouseenter', () => {
+        changeImage(brown2022Image, brown2022ImageArray); // Change to new Brown image on hover
+    });
+    
+    brown2022Image.addEventListener('mouseleave', () => {
+        brown2022Image.src = defaultBrown2022Image; // Reset to default Brown image when the mouse leaves
+    });
+}
+
+else { // On Mobile
+    brown2022Image.addEventListener('click', () => {
+        changeImage(brown2022Image, brown2022ImageArray); // Change to new Brown image on hover
+    });
+    
+    document.addEventListener('click', (event) => {
+        if (!profileImage.contains(event.target)) {
+            brown2022Image.src = defaultBrown2022Image; // Reset to default image when the mouse leaves
         }
     });
 }
