@@ -11,7 +11,7 @@ To run:
 1. Put vas.html in a folder and run python3 -m http.server 8000 there.
 2. On the iPad, with both devices on the same Wi-Fi, open http://<mac-ip>:8000/vas.html. 
 -->
-<title>Focus Lenses VAS</title>
+<title>DigiVAS</title>
 <style>
   /* Forced light scheme: the stimulus must look identical in every session. */
   :root {
@@ -106,7 +106,7 @@ To run:
 <!-- ================= Researcher: setup ================= -->
 <div id="setup" class="screen active">
   <div>
-    <h1>Focus Lenses VAS</h1>
+    <h1>DigiVAS</h1>
     <p class="note" id="versionNote"></p>
   </div>
 
@@ -131,7 +131,7 @@ To run:
   </section>
 
   <section>
-    <h2>Data on this iPad</h2>
+    <h2>Data on this device</h2>
     <p class="note" id="countNote"></p>
     <table id="recent"></table>
     <div class="row" style="margin-top:16px">
@@ -166,14 +166,14 @@ To run:
 
 <!-- ================= Participant: done ================= -->
 <div id="done" class="screen">
-  <p>Thank you.<br>Please hand the iPad back to the researcher.</p>
+  <p>Thank you.<br>Please hand the iPad back to the researcher.</p> <!-- "iPad" -> "device" -->
   <button class="hold-btn" id="returnBtn"><div class="fill" id="returnFill"></div><span>Researcher: press and hold</span></button>
 </div>
 
 <!-- ================= Researcher: calibration ================= -->
 <div id="calib" class="screen">
   <div>
-    <h1>Check line length</h1>
+    <h1>Check line length</h1> <!-- Empicical testing found 526px to be accurate for the 10th gen iPad -->
     <p class="note">Hold a ruler against the screen and measure between the outer edges of the two end marks. It should read exactly 100 mm. Adjust until it does, then save. The default of 520 px is computed for the iPad 10th generation (132 CSS px per inch).</p>
   </div>
   <div class="calib-stage">
