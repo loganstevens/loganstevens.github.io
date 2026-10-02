@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="FL VAS">
+<!--
+To run: 
+1. Put vas.html in a folder and run python3 -m http.server 8000 there.
+2. On the iPad, with both devices on the same Wi-Fi, open http://<mac-ip>:8000/vas.html. 
+-->
+<title>Focus Lenses VAS</title>
+<style>
+  /* Forced light scheme: the stimulus must look identical in every session. */
+  :root {
+    color-scheme: light;
+    --ink: #1a1a1a;
+    --muted: #5f6368;
+    --rule: #c9ccd1;
+    --panel: #f3f4f6;
+    --paper: #ffffff;
+    --action: #1f4e8c;
+    --danger: #a3261f;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.45;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+    touch-action: manipulation;
+  }
+  .screen { display: none; min-height: 100%; }
+  .screen.active { display: flex; }
+
+  /* ---------- Researcher screens ---------- */
+  #setup, #calib { flex-direction: column; padding: 32px 40px; gap: 24px; max-width: 900px; margin: 0 auto; overflow-y: auto; }
+  h1 { font-size: 24px; font-weight: 600; margin: 0; }
+  h2 { font-size: 18px; font-weight: 600; margin: 0 0 12px; }
+  .note { color: var(--muted); font-size: 15px; margin: 0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+  label { display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: var(--muted); }
+  input, select {
+    font: inherit; color: var(--ink); background: var(--paper);
+    border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; min-height: 44px;
+    -webkit-user-select: text; user-select: text;
+  }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  button {
+    font: inherit; font-weight: 600; min-height: 48px; padding: 0 22px; border-radius: 10px;
+    border: 1px solid var(--rule); background: var(--panel); color: var(--ink); cursor: pointer;
+  }
+  button.primary { background: var(--action); border-color: var(--action); color: #fff; }
+  button.danger { color: var(--danger); }
+  button:disabled { opacity: .35; cursor: default; }
+  button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--action); outline-offset: 2px; }
+  section { background: var(--panel); border-radius: 12px; padding: 20px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--rule); }
+  th { color: var(--muted); font-weight: 500; }
+  #csvBox { width: 100%; height: 160px; font: 12px/1.4 ui-monospace, Menlo, monospace; display: none;
+    -webkit-user-select: text; user-select: text; border: 1px solid var(--rule); border-radius: 8px; padding: 8px; }
+  .status { font-size: 15px; color: var(--muted); min-height: 1.4em; }
+
+  /* ---------- Participant screens ---------- */
+  #item, #done { flex-direction: column; align-items: center; justify-content: center; padding: 40px; gap: 56px; position: relative; }
+  .prompt { font-size: 30px; font-weight: 500; text-align: center; max-width: 30ch; margin: 0; }
+  .scale { position: relative; }
+  .hit {
+    position: relative; height: 120px; padding: 0 40px; /* 40 px touch margin beyond each end; touches there clamp to the end */
+    touch-action: none; cursor: pointer;
+  }
+  .line { position: absolute; top: 59px; height: 2px; background: var(--ink); }
+  .cap { position: absolute; top: 44px; width: 2px; height: 32px; background: var(--ink); }
+  .marker { position: absolute; top: 34px; width: 4px; height: 52px; margin-left: -2px; background: var(--action); border-radius: 2px; display: none; }
+  .anchors { position: relative; height: 3.2em; }
+  .anchor { position: absolute; top: 0; width: 180px; margin-left: -90px; text-align: center; font-size: 18px; line-height: 1.3; }
+  #confirmBtn { min-width: 200px; font-size: 19px; }
+  .hold-zone { position: absolute; top: 0; left: 0; width: 72px; height: 72px; }
+  #done p { font-size: 26px; text-align: center; margin: 0; }
+  .hold-btn { position: relative; overflow: hidden; color: var(--muted); font-weight: 500; }
+  .hold-btn .fill { position: absolute; inset: 0; background: var(--rule); transform-origin: left; transform: scaleX(0); }
+  .hold-btn span { position: relative; }
+
+  /* ---------- Calibration ---------- */
+  .calib-stage { background: var(--paper); border-radius: 12px; padding: 32px 0; display: flex; justify-content: center; }
+  .readout { font-size: 20px; font-variant-numeric: tabular-nums; }
+
+  @media (prefers-reduced-motion: reduce) { .hold-btn .fill { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ================= Researcher: setup ================= -->
+<div id="setup" class="screen active">
+  <div>
+    <h1>Focus Lenses VAS</h1>
+    <p class="note" id="versionNote"></p>
+  </div>
+
+  <section>
+    <h2>Next administration</h2>
+    <div class="grid">
+      <label>Participant ID <input id="pid" autocomplete="off" autocapitalize="characters" spellcheck="false"></label>
+      <label>Block <input id="block" type="number" min="1" step="1" inputmode="numeric"></label>
+      <label>Condition <select id="cond"></select></label>
+      <label>CPA script <select id="script"></select></label>
+      <label>Phase <select id="phase"></select></label>
+      <label>Item order <select id="order">
+        <option value="fixed">Fixed (as configured)</option>
+        <option value="random">Randomized</option>
+      </select></label>
+    </div>
+    <p class="note" style="margin-top:12px">Phase and block advance automatically after each administration. Check them before handing over the iPad.</p>
+    <div class="row" style="margin-top:16px">
+      <button class="primary" id="startBtn">Hand to participant</button>
+      <span class="status" id="setupStatus"></span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Data on this iPad</h2>
+    <p class="note" id="countNote"></p>
+    <table id="recent"></table>
+    <div class="row" style="margin-top:16px">
+      <button id="exportBtn">Download CSV</button>
+      <button id="copyBtn">Copy CSV</button>
+      <button id="calibBtn">Check line length</button>
+      <button class="danger" id="clearBtn">Delete all data</button>
+    </div>
+    <p class="status" id="dataStatus"></p>
+    <textarea id="csvBox" readonly></textarea>
+  </section>
+</div>
+
+<!-- ================= Participant: item ================= -->
+<div id="item" class="screen">
+  <div class="hold-zone" id="abortZone" aria-hidden="true"></div>
+  <p class="prompt" id="promptText"></p>
+  <div class="scale">
+    <div class="hit" id="hit">
+      <div class="line" id="line"></div>
+      <div class="cap" id="capL"></div>
+      <div class="cap" id="capR"></div>
+      <div class="marker" id="marker"></div>
+    </div>
+    <div class="anchors" id="anchors">
+      <div class="anchor" id="anchorL"></div>
+      <div class="anchor" id="anchorR"></div>
+    </div>
+  </div>
+  <button class="primary" id="confirmBtn" disabled>Continue</button>
+</div>
+
+<!-- ================= Participant: done ================= -->
+<div id="done" class="screen">
+  <p>Thank you.<br>Please hand the iPad back to the researcher.</p>
+  <button class="hold-btn" id="returnBtn"><div class="fill" id="returnFill"></div><span>Researcher: press and hold</span></button>
+</div>
+
+<!-- ================= Researcher: calibration ================= -->
+<div id="calib" class="screen">
+  <div>
+    <h1>Check line length</h1>
+    <p class="note">Hold a ruler against the screen and measure between the outer edges of the two end marks. It should read exactly 100 mm. Adjust until it does, then save. The default of 520 px is computed for the iPad 10th generation (132 CSS px per inch).</p>
+  </div>
+  <div class="calib-stage">
+    <div class="hit" style="touch-action:auto; cursor:default; padding:0">
+      <div class="line" id="cLine" style="left:0"></div>
+      <div class="cap" id="cCapL" style="left:0"></div>
+      <div class="cap" id="cCapR"></div>
+    </div>
+  </div>
+  <p class="readout" id="cReadout"></p>
+  <div class="row">
+    <button data-d="-10">−10 px</button>
+    <button data-d="-1">−1 px</button>
+    <button data-d="1">+1 px</button>
+    <button data-d="10">+10 px</button>
+    <button id="cReset">Reset to default</button>
+  </div>
+  <div class="row">
+    <button class="primary" id="cSave">Save and return</button>
+    <button id="cCancel">Cancel</button>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   CONFIG — edit item wording, condition and script labels here.
+   ===================================================================== */
+const CONFIG = {
+  appVersion: "1.0.1",
+  device: "iPad (10th generation)",
+  nominalLineMm: 100,
+  defaultLinePx: 526,          // 100 mm × (132 CSS px / 25.4 mm) = 519.7 px | Measured = 526 px
+  conditions: ["present", "absent", "occluded", "occluder-only", "VST"],
+  scripts: ["S1", "S2", "S3", "none"],
+  phases: ["pre", "post"],
+  items: [
+    { id: "anxiety",    prompt: "How anxious do you feel right now?",
+      left: "Not at all anxious",   right: "Extremely anxious" },
+    { id: "confidence", prompt: "How confident do you feel right now?",
+      left: "Not at all confident", right: "Extremely confident" }
+  ],
+  returnHoldMs: 1500,  // hold to leave the thank-you screen
+  abortHoldMs: 2500    // hold top-left corner during items to abort
+};
+
+const STORE_KEY = "flvas.records.v1";
+const SETUP_KEY = "flvas.setup.v1";
+const CALIB_KEY = "flvas.linepx.v1";
+const COLUMNS = ["session_id","participant","block","condition","script","phase","item","item_position",
+  "item_order_mode","score","x_px","line_px_config","line_px_rendered","line_mm_nominal","status",
+  "t_shown_iso","rt_first_touch_ms","rt_confirm_ms","n_touches","n_moves","viewport_w","viewport_h",
+  "device","app_version"];
+
+/* ---------- storage (all wrapped: Safari can refuse or clear it) ---------- */
+function load(key, fallback) {
+  try { const v = localStorage.getItem(key); return v === null ? fallback : JSON.parse(v); }
+  catch (e) { return fallback; }
+}
+function save(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); return true; }
+  catch (e) { return false; }
+}
+
+let records = load(STORE_KEY, []);
+let linePx = load(CALIB_KEY, CONFIG.defaultLinePx);
+let run = null; // active administration
+
+const $ = id => document.getElementById(id);
+function show(id) {
+  document.querySelectorAll(".screen").forEach(s => s.classList.toggle("active", s.id === id));
+}
+
+/* ---------- setup screen ---------- */
+function fillSelect(el, opts) { el.innerHTML = opts.map(o => `<option value="${o}">${o}</option>`).join(""); }
+fillSelect($("cond"), CONFIG.conditions);
+fillSelect($("script"), CONFIG.scripts);
+fillSelect($("phase"), CONFIG.phases);
+$("versionNote").textContent = `Version ${CONFIG.appVersion} · ${CONFIG.device} · line ${linePx} px`;
+
+function restoreSetup() {
+  const s = load(SETUP_KEY, {});
+  $("pid").value = s.participant || "";
+  $("block").value = s.block || 1;
+  if (s.condition) $("cond").value = s.condition;
+  if (s.script) $("script").value = s.script;
+  $("phase").value = s.phase || "pre";
+  $("order").value = s.order || "fixed";
+}
+function readSetup() {
+  return {
+    participant: $("pid").value.trim(),
+    block: parseInt($("block").value, 10),
+    condition: $("cond").value,
+    script: $("script").value,
+    phase: $("phase").value,
+    order: $("order").value
+  };
+}
+function renderData() {
+  const n = records.length;
+  const sessions = new Set(records.map(r => r.session_id)).size;
+  $("countNote").textContent = n
+    ? `${n} responses from ${sessions} administrations. Download a CSV at the end of every session; Safari may clear stored data.`
+    : "No responses stored yet.";
+  const last = records.slice(-6).reverse();
+  $("recent").innerHTML = last.length
+    ? "<tr><th>Participant</th><th>Block</th><th>Condition</th><th>Phase</th><th>Item</th><th>Score</th></tr>" +
+      last.map(r => `<tr><td>${r.participant}</td><td>${r.block}</td><td>${r.condition}</td><td>${r.phase}</td><td>${r.item}</td><td>${r.score}</td></tr>`).join("")
+    : "";
+  $("versionNote").textContent = `Version ${CONFIG.appVersion} · ${CONFIG.device} · line ${linePx} px`;
+}
+
+$("startBtn").onclick = () => {
+  const s = readSetup();
+  if (!s.participant) { $("setupStatus").textContent = "Enter a participant ID."; return; }
+  if (!Number.isInteger(s.block) || s.block < 1) { $("setupStatus").textContent = "Enter a block number of 1 or more."; return; }
+  $("setupStatus").textContent = "";
+  save(SETUP_KEY, s);
+  let items = CONFIG.items.slice();
+  if (s.order === "random") {
+    for (let i = items.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [items[i], items[j]] = [items[j], items[i]]; }
+  }
+  run = {
+    ...s,
+    session_id: `${s.participant}-${Date.now().toString(36)}`,
+    items, idx: 0
+  };
+  show("item");
+  presentItem();
+};
+
+/* ---------- item presentation & response capture ---------- */
+let trial = null;
+
+function layoutScale() {
+  const pad = 40;
+  $("line").style.left = pad + "px";
+  $("line").style.width = linePx + "px";
+  $("capL").style.left = (pad - 1) + "px";
+  $("capR").style.left = (pad + linePx - 1) + "px";
+  $("hit").style.width = (linePx + 2 * pad) + "px";
+  $("anchors").style.width = (linePx + 2 * pad) + "px";
+  $("anchorL").style.left = pad + "px";
+  $("anchorR").style.left = (pad + linePx) + "px";
+}
+
+function presentItem() {
+  const it = run.items[run.idx];
+  layoutScale();
+  $("promptText").textContent = it.prompt;
+  $("anchorL").textContent = it.left;
+  $("anchorR").textContent = it.right;
+  $("marker").style.display = "none";
+  $("confirmBtn").disabled = true;
+  trial = { item: it, x: null, tShown: performance.now(), tShownIso: new Date().toISOString(),
+            tFirst: null, nTouches: 0, nMoves: 0, dragging: false };
+}
+
+function placeAt(clientX) {
+  const rect = $("line").getBoundingClientRect();
+  let x = clientX - rect.left;
+  x = Math.max(0, Math.min(rect.width, x));
+  trial.x = x;
+  trial.renderedPx = rect.width;
+  $("marker").style.left = (40 + x) + "px";
+  $("marker").style.display = "block";
+  $("confirmBtn").disabled = false;
+}
+
+const hit = $("hit");
+hit.addEventListener("pointerdown", e => {
+  if (!trial) return;
+  e.preventDefault();
+  hit.setPointerCapture(e.pointerId);
+  trial.dragging = true;
+  trial.nTouches++;
+  if (trial.tFirst === null) trial.tFirst = performance.now();
+  placeAt(e.clientX);
+});
+hit.addEventListener("pointermove", e => {
+  if (!trial || !trial.dragging) return;
+  e.preventDefault();
+  trial.nMoves++;
+  placeAt(e.clientX);
+});
+const endDrag = () => { if (trial) trial.dragging = false; };
+hit.addEventListener("pointerup", endDrag);
+hit.addEventListener("pointercancel", endDrag);
+
+function makeRecord(it, position, status, t) {
+  const score = (status === "answered") ? (t.x / t.renderedPx * 100) : null;
+  return {
+    session_id: run.session_id, participant: run.participant, block: run.block,
+    condition: run.condition, script: run.script, phase: run.phase,
+    item: it.id, item_position: position, item_order_mode: run.order,
+    score: score === null ? "NA" : score.toFixed(2),
+    x_px: status === "answered" ? t.x.toFixed(2) : "NA",
+    line_px_config: linePx,
+    line_px_rendered: (t && t.renderedPx) ? t.renderedPx.toFixed(2) : "NA",
+    line_mm_nominal: CONFIG.nominalLineMm,
+    status,
+    t_shown_iso: t ? t.tShownIso : "NA",
+    rt_first_touch_ms: (t && t.tFirst !== null) ? Math.round(t.tFirst - t.tShown) : "NA",
+    rt_confirm_ms: status === "answered" ? Math.round(performance.now() - t.tShown) : "NA",
+    n_touches: t ? t.nTouches : "NA",
+    n_moves: t ? t.nMoves : "NA",
+    viewport_w: window.innerWidth, viewport_h: window.innerHeight,
+    device: CONFIG.device, app_version: CONFIG.appVersion
+  };
+}
+
+$("confirmBtn").onclick = () => {
+  if (!trial || trial.x === null) return;
+  records.push(makeRecord(trial.item, run.idx + 1, "answered", trial));
+  const ok = save(STORE_KEY, records);
+  run.storageFailed = run.storageFailed || !ok;
+  run.idx++;
+  if (run.idx < run.items.length) presentItem();
+  else finishRun();
+};
+
+function finishRun() {
+  trial = null;
+  // advance phase / block for the next administration
+  const s = load(SETUP_KEY, {});
+  if (run.phase === "pre") s.phase = "post";
+  else if (run.phase === "post") { s.phase = "pre"; s.block = (run.block || 1) + 1; }
+  save(SETUP_KEY, s);
+  show("done");
+}
+
+/* ---------- hold-to-act helpers ---------- */
+function holdable(el, ms, onDone, fillEl) {
+  let timer = null;
+  const start = e => {
+    e.preventDefault();
+    if (fillEl) { fillEl.style.transition = `transform ${ms}ms linear`; fillEl.style.transform = "scaleX(1)"; }
+    timer = setTimeout(() => { timer = null; reset(); onDone(); }, ms);
+  };
+  const reset = () => {
+    if (timer) { clearTimeout(timer); timer = null; }
+    if (fillEl) { fillEl.style.transition = "none"; fillEl.style.transform = "scaleX(0)"; }
+  };
+  el.addEventListener("pointerdown", start);
+  ["pointerup", "pointerleave", "pointercancel"].forEach(ev => el.addEventListener(ev, reset));
+}
+
+holdable($("returnBtn"), CONFIG.returnHoldMs, () => {
+  const failed = run && run.storageFailed;
+  run = null;
+  restoreSetup(); renderData(); show("setup");
+  $("setupStatus").textContent = failed
+    ? "Warning: this iPad refused to store the last responses. Download the CSV now and check Safari's storage settings."
+    : "Administration saved.";
+}, $("returnFill"));
+
+holdable($("abortZone"), CONFIG.abortHoldMs, () => {
+  if (!run) return;
+  if (!confirm("Abort this administration? Unanswered items will be recorded as missing (NA).")) return;
+  for (let i = run.idx; i < run.items.length; i++) {
+    const t = (i === run.idx) ? trial : null;
+    records.push(makeRecord(run.items[i], i + 1, "aborted", t));
+  }
+  save(STORE_KEY, records);
+  run = null; trial = null;
+  restoreSetup(); renderData(); show("setup");
+  $("setupStatus").textContent = "Administration aborted. Remaining items recorded as NA. Phase and block were not advanced.";
+});
+
+/* ---------- export ---------- */
+function toCSV() {
+  const esc = v => {
+    const s = String(v ?? "NA");
+    return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+  return [COLUMNS.join(",")].concat(records.map(r => COLUMNS.map(c => esc(r[c])).join(","))).join("\n") + "\n";
+}
+function stamp() { return new Date().toISOString().replace(/[:.]/g, "-").slice(0, 19); }
+
+$("exportBtn").onclick = () => {
+  if (!records.length) { $("dataStatus").textContent = "Nothing to download yet."; return; }
+  const blob = new Blob([toCSV()], { type: "text/csv" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `fl_vas_${stamp()}.csv`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+  $("dataStatus").textContent = "CSV downloaded. On iPad it is in Files › Downloads.";
+};
+
+$("copyBtn").onclick = async () => {
+  const csv = toCSV();
+  try {
+    await navigator.clipboard.writeText(csv);
+    $("dataStatus").textContent = "CSV copied to the clipboard.";
+  } catch (e) {
+    const box = $("csvBox");
+    box.style.display = "block"; box.value = csv; box.focus(); box.select();
+    $("dataStatus").textContent = "Clipboard unavailable here. The CSV is shown below; select all and copy.";
+  }
+};
+
+$("clearBtn").onclick = () => {
+  if (!records.length) return;
+  const typed = prompt(`This permanently deletes ${records.length} responses from this iPad. Download them first. Type DELETE to confirm.`);
+  if (typed !== "DELETE") { $("dataStatus").textContent = "Nothing deleted."; return; }
+  records = []; save(STORE_KEY, records); renderData();
+  $("dataStatus").textContent = "All responses deleted.";
+};
+
+/* ---------- calibration ---------- */
+let calibPx = linePx;
+function renderCalib() {
+  $("cLine").style.width = calibPx + "px";
+  $("cCapR").style.left = (calibPx - 2) + "px";
+  $("cLine").parentElement.style.width = calibPx + "px";
+  $("cReadout").textContent = `Line length: ${calibPx} px` + (calibPx === CONFIG.defaultLinePx ? " (default)" : "");
+}
+$("calibBtn").onclick = () => { calibPx = linePx; renderCalib(); show("calib"); };
+document.querySelectorAll("#calib [data-d]").forEach(b => b.onclick = () => {
+  calibPx = Math.max(200, Math.min(1000, calibPx + parseInt(b.dataset.d, 10))); renderCalib();
+});
+$("cReset").onclick = () => { calibPx = CONFIG.defaultLinePx; renderCalib(); };
+$("cSave").onclick = () => { linePx = calibPx; save(CALIB_KEY, linePx); renderData(); show("setup"); };
+$("cCancel").onclick = () => show("setup");
+
+/* ---------- block zoom gestures and stray scrolling ---------- */
+document.addEventListener("gesturestart", e => e.preventDefault());
+document.addEventListener("touchmove", e => {
+  if ($("item").classList.contains("active") || $("done").classList.contains("active")) e.preventDefault();
+}, { passive: false });
+
+restoreSetup();
+renderData();
+</script>
+</body>
+</html>
