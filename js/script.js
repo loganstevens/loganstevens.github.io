@@ -146,7 +146,7 @@ else { // On Mobile
     });
     
     document.addEventListener('click', (event) => {
-        if (!profileImage.contains(event.target)) {
+        if (!vr2025Image.contains(event.target)) {
             vr2025Image.src = defaultVr2025Image; // Reset to default image when the mouse leaves
         }
     });
@@ -170,7 +170,7 @@ else { // On Mobile
     });
     
     document.addEventListener('click', (event) => {
-        if (!profileImage.contains(event.target)) {
+        if (!brown2022Image.contains(event.target)) {
             brown2022Image.src = defaultBrown2022Image; // Reset to default image when the mouse leaves
         }
     });
