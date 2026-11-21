@@ -15,7 +15,8 @@ body {
     line-height: 1.6;
 /*     color: #333; */
     color: #2d2d2d;
-    max-width: 1200px;
+    /* max-width: 1200px; */
+    /* max-width: 70px; !! */
     margin: 0 auto;
     padding: 0 20px;
     min-height: 100vh; /* Ensure the body takes up at least the full height */
