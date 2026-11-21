@@ -215,8 +215,6 @@ function updateViewCounter() {
 //     lastUpdatedElement.textContent = `Last Updated: ${lastUpdated}`;  // Display the last updated time
 // }
 
-
-
 function updateLastUpdatedTime() {
     const lastUpdated = new Date(document.lastModified);
 
@@ -238,8 +236,6 @@ function updateLastUpdatedTime() {
         `Last Updated: ${get('month')}/${get('day')}/${get('year')}, ` +
         `${get('hour')}:${get('minute')} ${get('dayPeriod')} | ${get('timeZoneName')}`;
 }
-
-
 
 // Run the functions when the page is loaded
 document.addEventListener('DOMContentLoaded', () => {

@@ -621,11 +621,39 @@
 	    </ul>
     </section>
 
+
+	<script>
+	async function updateViewCount() {
+		const element = document.getElementById('view-count');
+
+		// Replace with a unique identifier for your website.
+		const key = 'Logan-C-Stevens-website-page-views';
+
+		try {
+			const response = await fetch(
+				`https://countapi.mileshilliard.com/api/v1/hit/${key}`
+			);
+
+			if (!response.ok) throw new Error('Counter unavailable');
+
+			const data = await response.json();
+			element.textContent = Number(data.value).toLocaleString('en-US');
+		} catch (error) {
+			console.error('Unable to update view counter:', error);
+			element.textContent = 'Unavailable';
+		}
+	}
+
+	updateViewCount();
+	</script>
+
+
     <!-- Footer Section -->
     <footer>
 	<!-- <p id="viewCounter">Page Views: Not Available</p> -->
 	<p>Made with ❤️ by Logan Stevens</p>
-        <p id="lastUpdated">Last Updated: Not Available</p>
+	<div>Page Views: <span id="view-count">Loading...</span></div>
+	<p id="lastUpdated">Last Updated: Not Available</p>
         <!-- <p>&copy; 2024 Logan Stevens | All rights reserved.</p> -->
     </footer>
 </body>
