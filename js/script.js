@@ -36,7 +36,7 @@ const brown2022ImageArray = [
 
 // Default image URL
 // const defaultProfileImage = "assets/img/profile.png";
-const defaultProfileImage = "assets/img/profile3.png";
+const defaultProfileImage = "assets/img/profile3.jpeg";
 const defaultVr2025Image = "assets/img/RDW-1.png";
 const defaultBrown2022Image = "assets/img/Brown.png";
 
