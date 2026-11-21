@@ -4,17 +4,6 @@ function isMobile() {
 
 const mobile = isMobile(); 
 
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-function paint() {
-  const max = document.documentElement.scrollHeight - innerHeight;
-  const p = max > 0 ? Math.min(Math.max(scrollY / max, 0), 1) : 0;
-  const pos = p * (colors.length - 1);
-  const i = Math.min(Math.floor(pos), colors.length - 2);
-  document.body.style.backgroundColor =
-    interpolateColor(hexToRgb(colors[i]), hexToRgb(colors[i + 1]), pos - i);
-}
-if (!reduce) { paint(); addEventListener('scroll', () => requestAnimationFrame(paint), { passive: true }); }
-
 // Array of profile image URLs | script.js
 const profileImageArray = [
     "assets/img/profile1.png",
@@ -322,6 +311,19 @@ romText.addEventListener('mouseover', function() {
 romText.addEventListener('mouseout', function() {
     this.textContent = "Elliot Huang";
 });
+
+/* --------------------------------------------------------------------------- */
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function paint() {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  const p = max > 0 ? Math.min(Math.max(scrollY / max, 0), 1) : 0;
+  const pos = p * (colors.length - 1);
+  const i = Math.min(Math.floor(pos), colors.length - 2);
+  document.body.style.backgroundColor =
+    interpolateColor(hexToRgb(colors[i]), hexToRgb(colors[i + 1]), pos - i);
+}
+if (!reduce) { paint(); addEventListener('scroll', () => requestAnimationFrame(paint), { passive: true }); }
 
 
 
