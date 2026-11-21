@@ -189,25 +189,45 @@ else { // On Mobile
 
 /* --------------------------------------------------------------------------- */
 const element = document.getElementById('view-count');
+const COUNTER_KEY = 'Logan-C-Stevens-website-page-views';
 
 async function updateViewCount() {
+    const element = document.getElementById('view-count');
 
-    // Replace with a unique identifier for your website.
-    const key = 'Logan-C-Stevens-website-page-views';
+    if (!element) {
+        console.error('View counter element not found!');
+        return;
+    }
 
     try {
         const response = await fetch(
-            `https://countapi.mileshilliard.com/api/v1/hit/${key}`
+            `https://countapi.mileshilliard.com/api/v1/hit/${encodeURIComponent(COUNTER_KEY)}`
         );
 
-        if (!response.ok) throw new Error('Counter unavailable');
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
 
         const data = await response.json();
-        element.textContent = Number(data.value).toLocaleString('en-US');
+        const count = Number(data.value);
+
+        if (!Number.isFinite(count)) {
+            throw new Error('Invalid counter response');
+        }
+
+        element.textContent = count.toLocaleString('en-US');
+
     } catch (error) {
-        console.error('Unable to update view counter:', error);
+        console.error('View counter error:', error);
         element.textContent = 'Unavailable';
     }
+}
+
+// Run once the HTML has loaded.
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateViewCount);
+} else {
+    updateViewCount();
 }
 
 /* --------------------------------------------------------------------------- */
