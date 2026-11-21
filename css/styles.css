@@ -393,13 +393,25 @@ tr {
 }
 
 
-.image-teaching {
+.image-teaching-old {
     /* width: 200px; */
     height: 350px; /* 350px -> 300px */
     border-radius: 25px; /* Make the image square with rounded corners */
     object-fit: cover; /* Ensure the image covers the area without distortion */
     z-index: 2; /* Ensure it sits above other content */
 }
+
+
+.image-teaching {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    max-height: 350px;
+    border-radius: 25px;
+    object-fit: contain;
+}
+
 
 /* #teaching-td-p {*/
 .teaching-td-p {
