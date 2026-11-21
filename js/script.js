@@ -216,11 +216,15 @@ function updateViewCounter() {
 // }
 
 
+
 function updateLastUpdatedTime() {
     const lastUpdated = new Date(document.lastModified);
 
     const formatter = new Intl.DateTimeFormat('en-US', {
         timeZone: 'America/New_York',
+        month: '2-digit',
+        day: '2-digit',
+        year: 'numeric',
         hour: 'numeric',
         minute: '2-digit',
         hour12: true,
@@ -231,8 +235,10 @@ function updateLastUpdatedTime() {
     const get = type => parts.find(p => p.type === type)?.value;
 
     lastUpdatedElement.textContent =
-        `Last Updated: ${get('hour')}:${get('minute')} ${get('dayPeriod')} | ${get('timeZoneName')}`;
+        `Last Updated: ${get('month')}/${get('day')}/${get('year')}, ` +
+        `${get('hour')}:${get('minute')} ${get('dayPeriod')} | ${get('timeZoneName')}`;
 }
+
 
 
 // Run the functions when the page is loaded
