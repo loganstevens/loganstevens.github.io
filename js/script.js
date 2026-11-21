@@ -45,13 +45,15 @@ const defaultBrown2022Image = "assets/img/Brown.png";
 // Function to get a random image
 
 function getRandomImage() {
-    const randomIndex = Math.floor(Math.random() * profileprofileImageArray.length);
-    return profileprofileImageArray[randomIndex];
+    const randomIndex = Math.floor(Math.random() * profileImageArray.length);
+    return profileImageArray[randomIndex];
 }
 
 // Get the image element
 const profileImage = document.getElementById('profileImage');
 const vr2025Image = document.getElementById('vr2025Image');
+const brown2022Image = document.getElementById('brown2022Image');
+
 let hasHovered = false;
 
 // Add event listeners to change the image on hover
@@ -76,7 +78,7 @@ let intervalId;
 /*
 function changeImage() {
     // Set the new image source
-    profileImage.src = profileprofileImageArray[currentProfileImageIndex];
+    profileImage.src = profileImageArray[currentProfileImageIndex];
     // Update the index to the next image
     currentProfileImageIndex = (currentProfileImageIndex + 1) % profileImageArray.length; // Loop back to the first image
 }
