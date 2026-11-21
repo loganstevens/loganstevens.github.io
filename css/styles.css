@@ -426,6 +426,24 @@ td {
     /* padding: 10px; */
 }
 
+/* Center the Teaching section's images */
+#teaching table {
+    width: auto;
+    margin: 0 auto;
+}
+
+/* Center images within their cells */
+#teaching .image-td-teaching {
+    text-align: center;
+}
+
+/* Preserve responsive layout on smaller screens */
+@media (max-width: 1016px) {
+    #teaching table {
+        width: 100%;
+    }
+}
+
 /* Media query for narrow screens */
 @media (max-width: 1016px) { /* 600px -> 1064px -> 1172px -> 1142px -> 1016px */
   table, tr, td {
