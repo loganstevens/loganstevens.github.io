@@ -189,6 +189,29 @@ else { // On Mobile
 
 /* --------------------------------------------------------------------------- */
 
+async function updateViewCount() {
+    const element = document.getElementById('view-count');
+
+    // Replace with a unique identifier for your website.
+    const key = 'Logan-C-Stevens-website-page-views';
+
+    try {
+        const response = await fetch(
+            `https://countapi.mileshilliard.com/api/v1/hit/${key}`
+        );
+
+        if (!response.ok) throw new Error('Counter unavailable');
+
+        const data = await response.json();
+        element.textContent = Number(data.value).toLocaleString('en-US');
+    } catch (error) {
+        console.error('Unable to update view counter:', error);
+        element.textContent = 'Unavailable';
+    }
+}
+
+/* --------------------------------------------------------------------------- */
+
 // Get the elements where the view count and last updated time will be displayed
 // const viewCounterElement = document.getElementById('viewCounter');
 const lastUpdatedElement = document.getElementById('lastUpdated');
@@ -346,15 +369,3 @@ function paint() {
     interpolateColor(hexToRgb(colors[i]), hexToRgb(colors[i + 1]), pos - i);
 }
 if (!reduce) { paint(); addEventListener('scroll', () => requestAnimationFrame(paint), { passive: true }); }
-
-
-
-
-
-
-
-
-
-
-
-
