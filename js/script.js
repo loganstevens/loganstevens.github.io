@@ -208,12 +208,32 @@ function updateViewCounter() {
 */
 
 // Display last updated time
+// function updateLastUpdatedTime() {
+//     // You can manually set this date or fetch it dynamically from a backend
+//     // const lastUpdated = 'November 19, 2026, 1:47 PM | EST';  // Replace with your actual update time
+//     const lastUpdated = document.lastModified;
+//     lastUpdatedElement.textContent = `Last Updated: ${lastUpdated}`;  // Display the last updated time
+// }
+
+
 function updateLastUpdatedTime() {
-    // You can manually set this date or fetch it dynamically from a backend
-    // const lastUpdated = 'November 19, 2026, 1:47 PM | EST';  // Replace with your actual update time
-    const lastUpdated = document.lastModified;
-    lastUpdatedElement.textContent = `Last Updated: ${lastUpdated}`;  // Display the last updated time
+    const lastUpdated = new Date(document.lastModified);
+
+    const formatter = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true,
+        timeZoneName: 'short'
+    });
+
+    const parts = formatter.formatToParts(lastUpdated);
+    const get = type => parts.find(p => p.type === type)?.value;
+
+    lastUpdatedElement.textContent =
+        `Last Updated: ${get('hour')}:${get('minute')} ${get('dayPeriod')} | ${get('timeZoneName')}`;
 }
+
 
 // Run the functions when the page is loaded
 document.addEventListener('DOMContentLoaded', () => {
