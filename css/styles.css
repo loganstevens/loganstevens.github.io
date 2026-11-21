@@ -500,6 +500,12 @@ td {
   color: #ff00f7;
 }
 
+/* Limit reading width without affecting layout */
+section > p:not(.left-button),
+section > ul {
+    max-width: 75ch;
+}
+
 /* Footer Styling */
 footer {
     text-align: center;
