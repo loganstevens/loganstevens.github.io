@@ -188,9 +188,9 @@ else { // On Mobile
 // });
 
 /* --------------------------------------------------------------------------- */
+const element = document.getElementById('view-count');
 
 async function updateViewCount() {
-    const element = document.getElementById('view-count');
 
     // Replace with a unique identifier for your website.
     const key = 'Logan-C-Stevens-website-page-views';
