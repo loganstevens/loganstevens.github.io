@@ -16,7 +16,7 @@ body {
 /*     color: #333; */
     color: #2d2d2d;
     /* max-width: 1200px; */
-    /* max-width: 70ch; */
+    max-width: 70ch;
     margin: 0 auto;
     padding: 0 20px;
     min-height: 100vh; /* Ensure the body takes up at least the full height */
