@@ -392,7 +392,8 @@ tr {
     z-index: 2; /* Ensure it sits above other content */
 }
 
-#teaching-td-p {
+/* #teaching-td-p {*/
+.teaching-td-p {
     font-style: italic;
     color: rgba(0, 0, 0, 0.6);
     text-align: center;
