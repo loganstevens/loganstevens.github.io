@@ -6,18 +6,18 @@ const mobile = isMobile();
 
 // Array of profile image URLs | script.js
 const profileImageArray = [
-    "assets/img/profile1.png",
-    "assets/img/profile2.png",
-    // "assets/img/profile3.png",
+    "assets/img/profile1.jpeg",
+    "assets/img/profile2.jpeg",
+    // "assets/img/profile3.jpeg",
     "assets/img/profile.png",
     // "assets/img/profile16.jpg",
     "assets/img/profile14.jpg",
-    "assets/img/profile4.png",
+    "assets/img/profile4.jpeg",
     "assets/img/profile10.jpg",
     "assets/img/profile5.png",
     "assets/img/profile9.jpg",
     "assets/img/profile8.png",
-    "assets/img/profile6.png",
+    "assets/img/profile6.jpeg",
     "assets/img/profile11.jpg",
     "assets/img/profile7.png",
     "assets/img/profile12.jpg",
