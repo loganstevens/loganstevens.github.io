@@ -201,12 +201,13 @@ async function updateViewCount() {
         return;
     }
 
-    if (window.__lcsPageViewHitSent) return;
+    if (window.__lcsPageViewHitSent) return; // Prevent multiple hits in the same session
     window.__lcsPageViewHitSent = true;
 
     try {
         const response = await fetch(
-            `https://countapi.mileshilliard.com/api/v1/hit/${encodeURIComponent(COUNTER_KEY)}`
+            // `https://countapi.mileshilliard.com/api/v1/hit/${encodeURIComponent(COUNTER_KEY)}`
+            `https://countapi.mileshilliard.com/api/v1/get/${encodeURIComponent(COUNTER_KEY)}`
         );
 
         if (!response.ok) {
