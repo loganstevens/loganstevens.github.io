@@ -201,6 +201,9 @@ async function updateViewCount() {
         return;
     }
 
+    if (window.__lcsPageViewHitSent) return;
+    window.__lcsPageViewHitSent = true;
+
     try {
         const response = await fetch(
             `https://countapi.mileshilliard.com/api/v1/hit/${encodeURIComponent(COUNTER_KEY)}`
