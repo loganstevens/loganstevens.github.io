@@ -206,8 +206,8 @@ async function updateViewCount() {
 
     try {
         const response = await fetch(
-            // `https://countapi.mileshilliard.com/api/v1/hit/${encodeURIComponent(COUNTER_KEY)}`
-            `https://countapi.mileshilliard.com/api/v1/get/${encodeURIComponent(COUNTER_KEY)}`
+            `https://countapi.mileshilliard.com/api/v1/hit/${encodeURIComponent(COUNTER_KEY)}`
+            // `https://countapi.mileshilliard.com/api/v1/get/${encodeURIComponent(COUNTER_KEY)}`
         );
 
         if (!response.ok) {
